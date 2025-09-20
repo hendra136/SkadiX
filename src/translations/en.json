@@ -1,0 +1,232 @@
+{
+  "navbar": {
+    "home": "Home",
+    "caseStudies": "Case Studies",
+    "reports": "Reports",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "SkadiX - Cold-Chain Logistics Infrastructure",
+    "subtitle": "A data-driven decision-support tool to identify the suitability levels of European coastal cities and ports for cold-chain logistics infrastructure. Supporting food security, fisheries, and temperature-sensitive supply chains.",
+    "tryTool": "Try the Tool",
+    "viewCaseStudies": "View Case Studies"
+  },
+  "footer": {
+    "callToAction": {
+      "title": "Ready to Analyze Sea Level Import in Ports?",
+      "description": "Start using our interactive tool today to visualize sea level rise predictions and make informed decisions for port infrastructure planning.",
+      "button": "Try the Tool"
+    },
+    "company": "Company",
+    "aboutUs": "About Us",
+    "careers": "Careers",
+    "news": "News",
+    "investors": "Investors",
+    "quickLinks": "Quick Links",
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "caseStudies": "Case Studies",
+    "reports": "Reports",
+    "resources": "Resources",
+    "documentation": "Documentation",
+    "api": "API",
+    "faq": "FAQ",
+    "blog": "Blog",
+    "contactUs": "Contact Us",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "copyright": "All rights reserved."
+  },
+  "caseStudies": {
+    "title": "Case Studies",
+    "subtitle": "Explore real-world applications of our cold-chain logistics infrastructure assessment tool across European coastal regions.",
+    "readMore": "Read More",
+    "author": "Author",
+    "date": "Date",
+    "tags": "Tags",
+    "noStudies": "No case studies available at the moment.",
+    "cta": {
+      "title": "Ready to Analyze Your Port?",
+      "description": "Start using our interactive tool today to visualize sea level rise predictions and make informed decisions for port infrastructure planning.",
+      "button": "Try the Tool"
+    },
+    "studies": [
+      {
+        "id": 1,
+        "title": "Rotterdam Port Adaptation",
+        "description": "How Europe's largest port is preparing for sea level rise with innovative infrastructure solutions. This comprehensive study examines the multi-billion euro investment in flood defenses, floating terminals, and adaptive logistics systems.",
+        "date": "January 15, 2023",
+        "author": "Dr. Emma Johnson",
+        "tags": ["Infrastructure", "Adaptation", "Netherlands"]
+      },
+      {
+        "id": 2,
+        "title": "Shanghai Port Vulnerability Assessment",
+        "description": "Analysis of flood risks and economic impact of sea level rise on China's busiest container port. This study provides detailed risk assessments and recommendations for climate resilience strategies.",
+        "date": "March 22, 2023",
+        "author": "Prof. Liu Wei",
+        "tags": ["Risk Assessment", "Economics", "China"]
+      },
+      {
+        "id": 3,
+        "title": "Singapore's Resilience Strategy",
+        "description": "How Singapore is implementing cutting-edge sea defense systems to protect its vital maritime infrastructure. A detailed look at the city-state's comprehensive approach to coastal protection.",
+        "date": "May 10, 2023",
+        "author": "Dr. Tan Mei Ling",
+        "tags": ["Defense Systems", "Innovation", "Singapore"]
+      },
+      {
+        "id": 4,
+        "title": "Hamburg Port Climate Adaptation",
+        "description": "Germany's second-largest port implements comprehensive climate adaptation measures including storm surge barriers and elevated infrastructure to protect against rising sea levels.",
+        "date": "June 18, 2023",
+        "author": "Dr. Klaus Mueller",
+        "tags": ["Climate Adaptation", "Germany", "Storm Surge"]
+      },
+      {
+        "id": 5,
+        "title": "Antwerp-Bruges Port Sustainability",
+        "description": "Belgium's largest port complex showcases innovative approaches to sustainable port operations while maintaining competitiveness in the face of climate challenges.",
+        "date": "July 25, 2023",
+        "author": "Prof. Marie Dubois",
+        "tags": ["Sustainability", "Belgium", "Innovation"]
+      },
+      {
+        "id": 6,
+        "title": "Marseille Port Modernization",
+        "description": "France's largest commercial port undergoes major infrastructure upgrades to enhance resilience against climate change while expanding capacity for Mediterranean trade.",
+        "date": "August 12, 2023",
+        "author": "Dr. Pierre Laurent",
+        "tags": ["Modernization", "France", "Mediterranean"]
+      },
+      {
+        "id": 7,
+        "title": "Singapore Port Climate Resilience",
+        "description": "Assessment of Singapore's port infrastructure adaptation strategies for climate change and sea level rise impacts.",
+        "date": "December 5, 2023",
+        "author": "Prof. Li Wei Chen",
+        "tags": ["Singapore", "Port Infrastructure", "Climate Adaptation"]
+      },
+      {
+        "id": 8,
+        "title": "Hamburg Port Future Planning",
+        "description": "Strategic planning for Hamburg port's long-term sustainability and adaptation to changing sea levels and extreme weather events.",
+        "date": "November 18, 2023",
+        "author": "Dr. Klaus Mueller",
+        "tags": ["Hamburg", "Strategic Planning", "Sustainability"]
+      }
+    ]
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "controlPanel": "Control Panel",
+    "portSelection": "Port Selection",
+    "selectPort": "Select Port",
+    "port": "Port",
+    "scenarioSelection": "Scenario Selection",
+    "selectScenario": "Select Scenario",
+    "scenario": "Scenario",
+    "language": "Language",
+    "dataLayers": "Data Layers",
+    "elevation": "Elevation",
+    "tide": "Tide",
+    "infrastructure": "Infrastructure",
+    "floodRisk": "Flood Risk",
+    "weight": "Weight",
+    "transparency": "Transparency",
+    "filters": "Filters",
+    "coastalSubmergenceAnalysis": "🌊 Coastal Submergence Analysis",
+    "layerControls": "Layer Controls",
+    "seaLevelRise": "Sea Level Rise",
+    "economicImpact": "Economic Impact",
+    "simulationControls": "Simulation Controls",
+    "timeHorizon": "Time Horizon",
+    "emissionScenario": "Emission Scenario",
+    "adaptationMeasures": "Adaptation Measures",
+    "runSimulation": "Run Simulation",
+    "exportResults": "Export Results",
+    "legend": {
+      "title": "Risk Zones",
+      "lowRisk": "Low Risk (0-30)",
+      "lowMedium": "Low-Medium (30-45)",
+      "medium": "Medium (45-60)",
+      "mediumHigh": "Medium-High (60-70)",
+      "high": "High (70-80)",
+      "critical": "Critical (80+)",
+      "currentRisk": "Current Risk"
+    },
+    "generateReport": "Generate Report",
+    "coastalSubmergence": {
+      "title": "Coastal Submergence Analysis",
+      "portAreaWaterLevel": "Port Area Water Level",
+      "coastalErosionRate": "Coastal Erosion Rate",
+      "floodRisk": "Flood Risk",
+      "infrastructureVulnerability": "Infrastructure Vulnerability",
+      "adaptationLevel": "Adaptation Level",
+      "dummyDataNote": "Dummy Data: This is simulated data for demonstration. Real analysis will integrate ML models with Blue-Cloud and EDITO Digital Twin Ocean resources.",
+      "refreshAnalysis": "Refresh Analysis"
+    }
+  },
+  "landing": {
+    "callToAction": {
+      "title": "Ready to Analyze Sea Level Impact on Ports?",
+      "description": "Start using our interactive tool today to visualize sea level rise predictions and make informed decisions for port infrastructure planning.",
+      "button": "Try the Tool Now"
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "steps": {
+        "selectPort": {
+          "title": "Select a Port",
+          "description": "Choose from major international ports to analyze sea level rise impact. Our database includes detailed information on port infrastructure, elevation, and historical tide data."
+        },
+        "chooseScenario": {
+          "title": "Choose Scenario and Year",
+          "description": "Select from different climate scenarios (low, medium, or high emissions) and projection years to see how sea levels might change over time under various conditions."
+        },
+        "adjustParameters": {
+          "title": "Adjust Parameters",
+          "description": "Fine-tune your analysis by adjusting the weight of different factors such as elevation, tide patterns, infrastructure resilience, and historical flood risk."
+        },
+        "visualizeResults": {
+          "title": "Visualize Results",
+          "description": "View the results on an interactive map showing predicted flood zones, risk levels, and port usability status. Generate detailed reports for planning and decision-making."
+        }
+      }
+    },
+    "features": {
+      "title": "Core Features",
+      "dataIntegration": {
+        "title": "Data Integration",
+        "description": "Comprehensive data from multiple sources including satellite measurements, tide gauges, and climate models to provide accurate sea level predictions."
+      },
+      "prediction": {
+        "title": "Prediction",
+        "description": "Advanced modeling techniques to predict sea level rise under different climate scenarios, helping ports prepare for future challenges."
+      },
+      "insights": {
+        "title": "Insights",
+        "description": "Visual analysis tools that transform complex data into actionable insights, enabling informed decision-making for port authorities."
+      }
+    },
+    "caseStudies": {
+      "title": "Case Studies",
+      "viewAll": "View All Case Studies",
+      "studies": {
+        "rotterdam": {
+          "title": "Rotterdam Port Adaptation",
+          "description": "How Europe's largest port is preparing for sea level rise with innovative infrastructure solutions."
+        },
+        "shanghai": {
+          "title": "Shanghai Port Vulnerability",
+          "description": "Analysis of flood risks and economic impact of sea level rise on China's busiest container port."
+        },
+        "singapore": {
+          "title": "Singapore's Resilience Strategy",
+          "description": "How Singapore is implementing cutting-edge sea defense systems to protect its vital maritime infrastructure."
+        }
+      }
+    }
+  }
+}

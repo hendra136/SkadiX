@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="ocean-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#023e8a" />
+      <stop offset="100%" stop-color="#0077b6" />
+    </linearGradient>
+    <radialGradient id="sun-gradient" cx="75%" cy="25%" r="25%" fx="75%" fy="25%">
+      <stop offset="0%" stop-color="#ffb703" />
+      <stop offset="100%" stop-color="#fb8500" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Sky background -->
+  <rect width="1920" height="540" fill="#48cae4" />
+  
+  <!-- Ocean background -->
+  <rect y="540" width="1920" height="540" fill="url(#ocean-gradient)" />
+  
+  <!-- Sun -->
+  <circle cx="1440" cy="270" r="150" fill="url(#sun-gradient)" />
+  
+  <!-- Distant city silhouette -->
+  <path d="M0,540 L100,520 L150,530 L200,510 L250,520 L300,500 L350,510 L400,490 L450,510 L500,480 L550,500 L600,470 L650,490 L700,460 L750,480 L800,450 L850,470 L900,440 L950,460 L1000,430 L1050,450 L1100,420 L1150,440 L1200,410 L1250,430 L1300,400 L1350,420 L1400,390 L1450,410 L1500,380 L1550,400 L1600,370 L1650,390 L1700,360 L1750,380 L1800,350 L1850,370 L1900,340 L1920,350 L1920,540 L0,540 Z" fill="#333" opacity="0.7" />
+  
+  <!-- Port cranes silhouette -->
+  <path d="M1200,540 L1200,400 L1220,400 L1220,420 L1300,420 L1300,400 L1320,400 L1320,540 Z" fill="#000" />
+  <path d="M1350,540 L1350,380 L1370,380 L1370,400 L1450,400 L1450,380 L1470,380 L1470,540 Z" fill="#000" />
+  <path d="M1500,540 L1500,420 L1520,420 L1520,440 L1600,440 L1600,420 L1620,420 L1620,540 Z" fill="#000" />
+  
+  <!-- Ship silhouette -->
+  <path d="M300,600 L500,600 L550,650 L700,650 L750,600 L900,600 L900,700 L300,700 Z" fill="#333" />
+  <rect x="600" y="550" width="50" height="50" fill="#333" />
+  <rect x="700" y="570" width="30" height="30" fill="#333" />
+  
+  <!-- Waves -->
+  <path d="M0,580 Q240,550 480,580 Q720,610 960,580 Q1200,550 1440,580 Q1680,610 1920,580 L1920,600 Q1680,630 1440,600 Q1200,570 960,600 Q720,630 480,600 Q240,570 0,600 Z" fill="#90e0ef" opacity="0.3" />
+  <path d="M0,620 Q240,590 480,620 Q720,650 960,620 Q1200,590 1440,620 Q1680,650 1920,620 L1920,640 Q1680,670 1440,640 Q1200,610 960,640 Q720,670 480,640 Q240,610 0,640 Z" fill="#90e0ef" opacity="0.3" />
+  <path d="M0,660 Q240,630 480,660 Q720,690 960,660 Q1200,630 1440,660 Q1680,690 1920,660 L1920,680 Q1680,710 1440,680 Q1200,650 960,680 Q720,710 480,680 Q240,650 0,680 Z" fill="#90e0ef" opacity="0.3" />
+</svg>

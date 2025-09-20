@@ -1,0 +1,232 @@
+{
+  "navbar": {
+    "home": "Inicio",
+    "caseStudies": "Casos de Estudio",
+    "reports": "Informes",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "SkadiX - Infraestructura Logística de Cadena de Frío",
+    "subtitle": "Una herramienta de apoyo a la toma de decisiones basada en datos para identificar los niveles de idoneidad de las ciudades costeras y puertos europeos para la infraestructura logística de cadena de frío. Apoyando la seguridad alimentaria, la pesca y las cadenas de suministro sensibles a la temperatura.",
+    "tryTool": "Probar la Herramienta",
+    "viewCaseStudies": "Ver Casos de Estudio"
+  },
+  "footer": {
+    "callToAction": {
+      "title": "¿Listo para analizar el impacto del nivel del mar en los puertos?",
+      "description": "Comience a usar nuestra herramienta interactiva hoy para visualizar las predicciones del aumento del nivel del mar y tomar decisiones informadas para la planificación de infraestructura portuaria.",
+      "button": "Probar la herramienta"
+    },
+    "company": "Empresa",
+    "aboutUs": "Acerca de",
+    "careers": "Carreras",
+    "news": "Noticias",
+    "investors": "Inversores",
+    "quickLinks": "Enlaces rápidos",
+    "home": "Inicio",
+    "dashboard": "Panel",
+    "caseStudies": "Estudios de caso",
+    "reports": "Informes",
+    "resources": "Recursos",
+    "documentation": "Documentación",
+    "api": "API",
+    "faq": "FAQ",
+    "blog": "Blog",
+    "contactUs": "Contáctanos",
+    "email": "Email",
+    "phone": "Teléfono",
+    "address": "Dirección",
+    "copyright": "Todos los derechos reservados."
+  },
+  "caseStudies": {
+    "title": "Casos de Estudio",
+    "subtitle": "Explore aplicaciones del mundo real de nuestra herramienta de evaluación de infraestructura logística de cadena de frío en regiones costeras europeas.",
+    "readMore": "Leer Más",
+    "author": "Autor",
+    "date": "Fecha",
+    "tags": "Etiquetas",
+    "noStudies": "No hay casos de estudio disponibles en este momento.",
+    "cta": {
+      "title": "¿Listo para Analizar tu Puerto?",
+      "description": "Comience a usar nuestra herramienta interactiva hoy para visualizar las predicciones del aumento del nivel del mar y tomar decisiones informadas para la planificación de infraestructura portuaria.",
+      "button": "Probar la Herramienta"
+    },
+    "studies": [
+      {
+        "id": 1,
+        "title": "Adaptación del Puerto de Rotterdam",
+        "description": "Cómo el puerto más grande de Europa se está preparando para el aumento del nivel del mar con soluciones de infraestructura innovadoras. Este estudio integral examina la inversión multimillonaria en defensas contra inundaciones, terminales flotantes y sistemas logísticos adaptativos.",
+        "date": "15 de enero de 2023",
+        "author": "Dr. Emma Johnson",
+        "tags": ["Infraestructura", "Adaptación", "Países Bajos"]
+      },
+      {
+        "id": 2,
+        "title": "Evaluación de Vulnerabilidad del Puerto de Shanghai",
+        "description": "Análisis de riesgos de inundación e impacto económico del aumento del nivel del mar en el puerto de contenedores más ocupado de China. Este estudio proporciona evaluaciones detalladas de riesgos y recomendaciones para estrategias de resistencia climática.",
+        "date": "22 de marzo de 2023",
+        "author": "Prof. Liu Wei",
+        "tags": ["Evaluación de Riesgos", "Economía", "China"]
+      },
+      {
+        "id": 3,
+        "title": "Estrategia de Resistencia de Singapur",
+        "description": "Cómo Singapur está implementando sistemas de defensa marítima de vanguardia para proteger su infraestructura marítima vital. Una mirada detallada al enfoque integral de la ciudad-estado para la protección costera.",
+        "date": "10 de mayo de 2023",
+        "author": "Dr. Tan Mei Ling",
+        "tags": ["Sistemas de Defensa", "Innovación", "Singapur"]
+      },
+      {
+        "id": 4,
+        "title": "Adaptación Climática del Puerto de Hamburgo",
+        "description": "El segundo puerto más grande de Alemania implementa medidas integrales de adaptación climática, incluyendo barreras contra marejadas ciclónicas e infraestructura elevada para protegerse contra el aumento del nivel del mar.",
+        "date": "18 de junio de 2023",
+        "author": "Dr. Klaus Mueller",
+        "tags": ["Adaptación Climática", "Alemania", "Marejada Ciclónica"]
+      },
+      {
+        "id": 5,
+        "title": "Sostenibilidad del Puerto de Amberes-Brujas",
+        "description": "El complejo portuario más grande de Bélgica muestra enfoques innovadores para operaciones portuarias sostenibles mientras mantiene la competitividad frente a los desafíos climáticos.",
+        "date": "25 de julio de 2023",
+        "author": "Prof. Marie Dubois",
+        "tags": ["Sostenibilidad", "Bélgica", "Innovación"]
+      },
+      {
+        "id": 6,
+        "title": "Análisis de Obras del Delta de los Países Bajos",
+        "description": "Análisis integral del sistema de protección contra inundaciones de las Obras del Delta y su efectividad contra el aumento del nivel del mar en los Países Bajos.",
+        "date": "10 de enero de 2024",
+        "author": "Dr. Emma van der Berg",
+        "tags": ["Protección contra Inundaciones", "Países Bajos", "Infraestructura"]
+      },
+      {
+        "id": 7,
+        "title": "Resistencia Climática del Puerto de Singapur",
+        "description": "Evaluación de las estrategias de adaptación de la infraestructura portuaria de Singapur al cambio climático y al aumento del nivel del mar.",
+        "date": "5 de diciembre de 2023",
+        "author": "Prof. Li Wei Chen",
+        "tags": ["Singapur", "Infraestructura Portuaria", "Adaptación Climática"]
+      },
+      {
+        "id": 8,
+        "title": "Planificación Futura del Puerto de Hamburgo",
+        "description": "Planificación estratégica para la sostenibilidad a largo plazo del puerto de Hamburgo y adaptación a los cambios del nivel del mar y eventos climáticos extremos.",
+        "date": "18 de noviembre de 2023",
+        "author": "Dr. Klaus Mueller",
+        "tags": ["Hamburgo", "Planificación Estratégica", "Sostenibilidad"]
+      }
+    ]
+  },
+  "dashboard": {
+    "title": "Panel de Control",
+    "controlPanel": "Panel de Control",
+    "portSelection": "Selección de Puerto",
+    "selectPort": "Seleccionar Puerto",
+    "port": "Puerto",
+    "scenarioSelection": "Selección de Escenario",
+    "selectScenario": "Seleccionar Escenario",
+    "scenario": "Escenario",
+    "language": "Idioma",
+    "dataLayers": "Capas de Datos",
+    "elevation": "Elevación",
+    "tide": "Marea",
+    "infrastructure": "Infraestructura",
+    "floodRisk": "Riesgo de Inundación",
+    "weight": "Peso",
+    "transparency": "Transparencia",
+    "filters": "Filtros",
+    "coastalSubmergenceAnalysis": "🌊 Análisis de Sumersión Costera",
+    "layerControls": "Controles de Capas",
+    "seaLevelRise": "Aumento del Nivel del Mar",
+    "economicImpact": "Impacto Económico",
+    "simulationControls": "Controles de Simulación",
+    "timeHorizon": "Horizonte Temporal",
+    "emissionScenario": "Escenario de Emisiones",
+    "adaptationMeasures": "Medidas de Adaptación",
+    "runSimulation": "Ejecutar Simulación",
+    "exportResults": "Exportar Resultados",
+    "legend": {
+      "title": "Zonas de Riesgo",
+      "lowRisk": "Riesgo Bajo (0-30)",
+      "lowMedium": "Bajo-Medio (30-45)",
+      "medium": "Medio (45-60)",
+      "mediumHigh": "Medio-Alto (60-70)",
+      "high": "Alto (70-80)",
+      "critical": "Crítico (80+)",
+      "currentRisk": "Riesgo Actual"
+    },
+    "generateReport": "Generar Informe",
+    "coastalSubmergence": {
+      "title": "Análisis de Sumersión Costera",
+      "portAreaWaterLevel": "Nivel de Agua del Área Portuaria",
+      "coastalErosionRate": "Tasa de Erosión Costera",
+      "floodRisk": "Riesgo de Inundación",
+      "infrastructureVulnerability": "Vulnerabilidad de Infraestructura",
+      "adaptationLevel": "Nivel de Adaptación",
+      "dummyDataNote": "Datos Simulados: Estos son datos simulados para demostración. El análisis real integrará modelos ML con recursos de Blue-Cloud y EDITO Digital Twin Ocean.",
+      "refreshAnalysis": "Actualizar Análisis"
+    }
+  },
+  "landing": {
+    "callToAction": {
+      "title": "¿Listo para Analizar el Impacto del Nivel del Mar en los Puertos?",
+      "description": "Comience a usar nuestra herramienta interactiva hoy para visualizar las predicciones del aumento del nivel del mar y tomar decisiones informadas para la planificación de infraestructura portuaria.",
+      "button": "Prueba la Herramienta Ahora"
+    },
+    "howItWorks": {
+      "title": "Cómo Funciona",
+      "steps": {
+        "selectPort": {
+          "title": "Seleccionar un Puerto",
+          "description": "Elija entre los principales puertos internacionales para analizar el impacto del aumento del nivel del mar. Nuestra base de datos incluye información detallada sobre infraestructura portuaria, elevación y datos históricos de mareas."
+        },
+        "chooseScenario": {
+          "title": "Elegir Escenario y Año",
+          "description": "Seleccione entre diferentes escenarios climáticos (emisiones bajas, medias o altas) y años de proyección para ver cómo podrían cambiar los niveles del mar a lo largo del tiempo bajo varias condiciones."
+        },
+        "adjustParameters": {
+          "title": "Ajustar Parámetros",
+          "description": "Ajuste su análisis modificando el peso de diferentes factores como elevación, patrones de mareas, resistencia de infraestructura y riesgo histórico de inundaciones."
+        },
+        "visualizeResults": {
+          "title": "Visualizar Resultados",
+          "description": "Vea los resultados en un mapa interactivo que muestra zonas de inundación predichas, niveles de riesgo y estado de usabilidad del puerto. Genere informes detallados para planificación y toma de decisiones."
+        }
+      }
+    },
+    "features": {
+      "title": "Características Principales",
+      "dataIntegration": {
+        "title": "Integración de Datos",
+        "description": "Datos completos de múltiples fuentes incluyendo mediciones satelitales, medidores de marea y modelos climáticos para proporcionar predicciones precisas del nivel del mar."
+      },
+      "prediction": {
+        "title": "Predicción",
+        "description": "Técnicas de modelado avanzadas para predecir el aumento del nivel del mar bajo diferentes escenarios climáticos, ayudando a los puertos a prepararse para desafíos futuros."
+      },
+      "insights": {
+        "title": "Perspectivas",
+        "description": "Herramientas de análisis visual que transforman datos complejos en perspectivas accionables, permitiendo la toma de decisiones informadas para autoridades portuarias."
+      }
+    },
+    "caseStudies": {
+      "title": "Estudios de Caso",
+      "viewAll": "Ver Todos los Estudios de Caso",
+      "studies": {
+        "rotterdam": {
+          "title": "Adaptación del Puerto de Rotterdam",
+          "description": "Cómo el puerto más grande de Europa se está preparando para el aumento del nivel del mar con soluciones de infraestructura innovadoras."
+        },
+        "shanghai": {
+          "title": "Vulnerabilidad del Puerto de Shanghai",
+          "description": "Análisis de riesgos de inundación e impacto económico del aumento del nivel del mar en el puerto de contenedores más ocupado de China."
+        },
+        "singapore": {
+          "title": "Estrategia de Resistencia de Singapur",
+          "description": "Cómo Singapur está implementando sistemas de defensa marítima de vanguardia para proteger su infraestructura marítima vital."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,232 @@
+{
+  "navbar": {
+    "home": "Home",
+    "caseStudies": "Casestudies",
+    "reports": "Rapporten",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "SkadiX - Koude Keten Logistieke Infrastructuur",
+    "subtitle": "Een datagedreven beslissingsondersteuningstool om de geschiktheidsniveaus van Europese kuststeden en havens voor koude keten logistieke infrastructuur te identificeren. Ondersteunt voedselzekerheid, visserij en temperatuurgevoelige toeleveringsketens.",
+    "tryTool": "Probeer de Tool",
+    "viewCaseStudies": "Bekijk Casestudies"
+  },
+  "footer": {
+    "callToAction": {
+      "title": "Klaar om zeespiegelimpact in havens te analyseren?",
+      "description": "Begin vandaag nog met het gebruik van onze interactieve tool om zeespiegelstijgingsvoorspellingen te visualiseren en weloverwogen beslissingen te nemen voor haveninfrastructuurplanning.",
+      "button": "Probeer de tool"
+    },
+    "company": "Bedrijf",
+    "aboutUs": "Over Ons",
+    "careers": "Carrières",
+    "news": "Nieuws",
+    "investors": "Investeerders",
+    "quickLinks": "Snelle links",
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "caseStudies": "Case studies",
+    "reports": "Rapporten",
+    "resources": "Bronnen",
+    "documentation": "Documentatie",
+    "api": "API",
+    "faq": "FAQ",
+    "blog": "Blog",
+    "contactUs": "Contact",
+    "email": "Email",
+    "phone": "Telefoon",
+    "address": "Adres",
+    "copyright": "Alle rechten voorbehouden."
+  },
+  "caseStudies": {
+    "title": "Casestudies",
+    "subtitle": "Verken real-world toepassingen van onze koude-keten logistieke infrastructuur beoordelingsinstrument in Europese kustgebieden.",
+    "readMore": "Lees Meer",
+    "author": "Auteur",
+    "date": "Datum",
+    "tags": "Tags",
+    "noStudies": "Geen casestudies beschikbaar op dit moment.",
+    "cta": {
+      "title": "Klaar om Uw Haven te Analyseren?",
+      "description": "Begin vandaag nog met het gebruik van onze interactieve tool om zeespiegelstijgingsvoorspellingen te visualiseren en weloverwogen beslissingen te nemen voor haveninfrastructuurplanning.",
+      "button": "Probeer de Tool"
+    },
+    "studies": [
+      {
+        "id": 1,
+        "title": "Rotterdam Haven Aanpassing",
+        "description": "Hoe Europa's grootste haven zich voorbereidt op zeespiegelstijging met innovatieve infrastructuuroplossingen. Deze uitgebreide studie onderzoekt de miljardeneuro-investering in overstromingsverdediging, drijvende terminals en adaptieve logistieke systemen.",
+        "date": "15 januari 2023",
+        "author": "Dr. Emma Johnson",
+        "tags": ["Infrastructuur", "Aanpassing", "Nederland"]
+      },
+      {
+        "id": 2,
+        "title": "Shanghai Haven Kwetsbaarheidsbeoordeling",
+        "description": "Analyse van overstromingsrisico's en economische impact van zeespiegelstijging op China's drukste containerhaven. Deze studie biedt gedetailleerde risicobeoordelingen en aanbevelingen voor klimaatbestendigheidsstrategieën.",
+        "date": "22 maart 2023",
+        "author": "Prof. Liu Wei",
+        "tags": ["Risicobeoordeling", "Economie", "China"]
+      },
+      {
+        "id": 3,
+        "title": "Singapore's Veerkrachtstrategie",
+        "description": "Hoe Singapore geavanceerde zeeverdedigingssystemen implementeert om zijn vitale maritieme infrastructuur te beschermen. Een gedetailleerde blik op de alomvattende benadering van de stadstaat voor kustbescherming.",
+        "date": "10 mei 2023",
+        "author": "Dr. Tan Mei Ling",
+        "tags": ["Verdedigingssystemen", "Innovatie", "Singapore"]
+      },
+      {
+        "id": 4,
+        "title": "Hamburg Haven Klimaataanpassing",
+        "description": "Duitsland's op een na grootste haven implementeert uitgebreide klimaataanpassingsmaatregelen, waaronder stormvloedbarrières en verhoogde infrastructuur om te beschermen tegen stijgende zeespiegels.",
+        "date": "18 juni 2023",
+        "author": "Dr. Klaus Mueller",
+        "tags": ["Klimaataanpassing", "Duitsland", "Stormvloed"]
+      },
+      {
+        "id": 5,
+        "title": "Antwerpen-Brugge Haven Duurzaamheid",
+        "description": "België's grootste havencomplex toont innovatieve benaderingen voor duurzame havenoperaties terwijl het concurrentievermogen behouden blijft ondanks klimaatuitdagingen.",
+        "date": "25 juli 2023",
+        "author": "Prof. Marie Dubois",
+        "tags": ["Duurzaamheid", "België", "Innovatie"]
+      },
+      {
+        "id": 6,
+        "title": "Nederland Deltawerken Analyse",
+        "description": "Uitgebreide analyse van het Deltawerken overstromingsbeschermingssysteem en de effectiviteit tegen stijgende zeespiegels in Nederland.",
+        "date": "10 januari 2024",
+        "author": "Dr. Emma van der Berg",
+        "tags": ["Overstromingsbescherming", "Nederland", "Infrastructuur"]
+      },
+      {
+        "id": 7,
+        "title": "Singapore Haven Klimaatbestendigheid",
+        "description": "Beoordeling van Singapore's haveninfrastructuur aanpassingsstrategieën voor klimaatverandering en zeespiegelstijging impacts.",
+        "date": "5 december 2023",
+        "author": "Prof. Li Wei Chen",
+        "tags": ["Singapore", "Haveninfrastructuur", "Klimaataanpassing"]
+      },
+      {
+        "id": 8,
+        "title": "Hamburg Haven Toekomstplanning",
+        "description": "Strategische planning voor Hamburg haven's langetermijn duurzaamheid en aanpassing aan veranderende zeespiegels en extreme weersomstandigheden.",
+        "date": "18 november 2023",
+        "author": "Dr. Klaus Mueller",
+        "tags": ["Hamburg", "Strategische Planning", "Duurzaamheid"]
+      }
+    ]
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "controlPanel": "Controlepaneel",
+    "portSelection": "Haven Selectie",
+    "selectPort": "Selecteer Haven",
+    "port": "Haven",
+    "scenarioSelection": "Scenario Selectie",
+    "selectScenario": "Selecteer Scenario",
+    "scenario": "Scenario",
+    "language": "Taal",
+    "dataLayers": "Gegevenslagen",
+    "elevation": "Hoogte",
+    "tide": "Getij",
+    "infrastructure": "Infrastructuur",
+    "floodRisk": "Overstromingsrisico",
+    "weight": "Gewicht",
+    "transparency": "Transparantie",
+    "filters": "Filters",
+    "coastalSubmergenceAnalysis": "🌊 Kustonderdompelingsanalyse",
+    "layerControls": "Laag Controles",
+    "seaLevelRise": "Zeespiegelstijging",
+    "economicImpact": "Economische Impact",
+    "simulationControls": "Simulatie Controles",
+    "timeHorizon": "Tijdshorizon",
+    "emissionScenario": "Emissiescenario",
+    "adaptationMeasures": "Aanpassingsmaatregelen",
+    "runSimulation": "Simulatie Uitvoeren",
+    "exportResults": "Resultaten Exporteren",
+    "legend": {
+      "title": "Risicozones",
+      "lowRisk": "Laag Risico (0-30)",
+      "lowMedium": "Laag-Gemiddeld (30-45)",
+      "medium": "Gemiddeld (45-60)",
+      "mediumHigh": "Gemiddeld-Hoog (60-70)",
+      "high": "Hoog (70-80)",
+      "critical": "Kritiek (80+)",
+      "currentRisk": "Huidig Risico"
+    },
+    "generateReport": "Rapport Genereren",
+    "coastalSubmergence": {
+      "title": "Kustonderdompeling Analyse",
+      "portAreaWaterLevel": "Waterniveau Havengebied",
+      "coastalErosionRate": "Kusterosie Snelheid",
+      "floodRisk": "Overstromingsrisico",
+      "infrastructureVulnerability": "Infrastructuur Kwetsbaarheid",
+      "adaptationLevel": "Aanpassingsniveau",
+      "dummyDataNote": "Gesimuleerde Gegevens: Dit zijn gesimuleerde gegevens voor demonstratie. Echte analyse zal ML-modellen integreren met Blue-Cloud en EDITO Digital Twin Ocean bronnen.",
+      "refreshAnalysis": "Analyse Vernieuwen"
+    }
+  },
+  "landing": {
+    "callToAction": {
+      "title": "Klaar om de Impact van Zeespiegelstijging op Havens te Analyseren?",
+      "description": "Begin vandaag nog met het gebruik van onze interactieve tool om zeespiegelstijgingvoorspellingen te visualiseren en weloverwogen beslissingen te nemen voor haveninfrastructuurplanning.",
+      "button": "Probeer de Tool Nu"
+    },
+    "howItWorks": {
+      "title": "Hoe Het Werkt",
+      "steps": {
+        "selectPort": {
+          "title": "Selecteer een Haven",
+          "description": "Kies uit grote internationale havens om de impact van zeespiegelstijging te analyseren. Onze database bevat gedetailleerde informatie over haveninfrastructuur, hoogte en historische getijdengegevens."
+        },
+        "chooseScenario": {
+          "title": "Kies Scenario en Jaar",
+          "description": "Selecteer uit verschillende klimaatscenario's (lage, gemiddelde of hoge emissies) en projectiejaren om te zien hoe zeeniveaus kunnen veranderen over tijd onder verschillende omstandigheden."
+        },
+        "adjustParameters": {
+          "title": "Parameters Aanpassen",
+          "description": "Verfijn uw analyse door het gewicht van verschillende factoren aan te passen zoals hoogte, getijdenpatronen, infrastructuurbestendigheid en historisch overstromingsrisico."
+        },
+        "visualizeResults": {
+          "title": "Resultaten Visualiseren",
+          "description": "Bekijk de resultaten op een interactieve kaart die voorspelde overstromingszones, risiconiveaus en havenbruikbaarheidsstatus toont. Genereer gedetailleerde rapporten voor planning en besluitvorming."
+        }
+      }
+    },
+    "features": {
+      "title": "Kernfuncties",
+      "dataIntegration": {
+        "title": "Data-integratie",
+        "description": "Uitgebreide gegevens uit meerdere bronnen inclusief satellietmetingen, getijdemeters en klimaatmodellen om nauwkeurige zeespiegelvoorspellingen te bieden."
+      },
+      "prediction": {
+        "title": "Voorspelling",
+        "description": "Geavanceerde modelleringstechnieken om zeespiegelstijging te voorspellen onder verschillende klimaatscenario's, waardoor havens zich kunnen voorbereiden op toekomstige uitdagingen."
+      },
+      "insights": {
+        "title": "Inzichten",
+        "description": "Visuele analysetools die complexe gegevens omzetten in bruikbare inzichten, waardoor geïnformeerde besluitvorming voor havenautoriteiten mogelijk wordt."
+      }
+    },
+    "caseStudies": {
+      "title": "Casestudies",
+      "viewAll": "Bekijk Alle Casestudies",
+      "studies": {
+        "rotterdam": {
+          "title": "Rotterdam Haven Aanpassing",
+          "description": "Hoe Europa's grootste haven zich voorbereidt op zeespiegelstijging met innovatieve infrastructuuroplossingen."
+        },
+        "shanghai": {
+          "title": "Shanghai Haven Kwetsbaarheid",
+          "description": "Analyse van overstromingsrisico's en economische impact van zeespiegelstijging op China's drukste containerhaven."
+        },
+        "singapore": {
+          "title": "Singapore's Veerkrachtstrategie",
+          "description": "Hoe Singapore geavanceerde zeeverdedigingssystemen implementeert om zijn vitale maritieme infrastructuur te beschermen."
+        }
+      }
+    }
+  }
+}
