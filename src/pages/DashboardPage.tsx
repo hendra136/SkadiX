@@ -21,7 +21,15 @@ const DashboardContent = styled.div`
   position: relative;
   
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    flex-direction: column;
     padding-top: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    flex-direction: column;
+    height: calc(100vh - 60px);
   }
 `;
 
@@ -55,7 +63,7 @@ const DashboardPage: React.FC = () => {
     <DashboardContainer>
       <Navbar />
       <DashboardContent>
-        <Sidebar className={isSidebarOpen ? 'open' : ''} />
+        <Sidebar isSidebarOpen={isSidebarOpen} />
         <Map onIndicatorExpandChange={setIsIndicatorExpanded} />
         <MobileControls 
           isSidebarOpen={isSidebarOpen} 

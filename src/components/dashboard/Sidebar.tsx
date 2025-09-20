@@ -80,9 +80,6 @@ const SidebarContainer = styled.div`
   }
   
   @media (max-width: ${({ theme }) => theme.breakpoints?.md || '768px'}) {
-    width: 240px;
-    padding: 1rem 0.75rem;
-    padding-top: 80px;
     position: fixed;
     top: 0;
     left: -100%;
@@ -90,25 +87,44 @@ const SidebarContainer = styled.div`
     max-width: 320px;
     height: 100vh;
     z-index: 1001;
+    padding: 1rem 0.75rem;
+    padding-top: 80px;
     transition: left 0.3s ease;
+    
+    /* Add backdrop blur overlay */
+    &::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 320px;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: -1;
+    }
     
     &.open {
       left: 0;
+      
+      &::after {
+        opacity: 1;
+        visibility: visible;
+      }
     }
   }
   
   @media (max-width: ${({ theme }) => theme.breakpoints?.sm || '576px'}) {
-    width: 100%;
-    height: auto;
-    position: relative;
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 1.5rem 1rem;
-    padding-top: 76px;
-    max-width: 300px;
-    box-shadow: 
-      0 8px 32px rgba(0, 61, 130, 0.08),
-      0 4px 16px rgba(0, 61, 130, 0.04);
+    max-width: 280px;
+    padding: 1rem;
+    padding-top: 70px;
+    
+    &::after {
+      left: 280px;
+    }
   }
 `;
 
@@ -256,10 +272,10 @@ const ButtonsContainer = styled.div`
 
 
 interface SidebarProps {
-  className?: string;
+  isSidebarOpen: boolean;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ className }) => {
+const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen }) => {
   const {
     selectedPort,
     setSelectedPort,
@@ -292,7 +308,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
 
 
   return (
-    <SidebarContainer className={className}>
+    <SidebarContainer className={isSidebarOpen ? 'open' : ''}>
       <SidebarTitle>{t('dashboard.controlPanel')}</SidebarTitle>
       
       <SidebarSection>

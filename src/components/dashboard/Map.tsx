@@ -23,15 +23,21 @@ L.Icon.Default.mergeOptions({
 const MapWrapper = styled.div`
   flex: 1;
   height: 100%;
+  width: 100%;
   position: relative;
+  min-height: 0; /* Important for flex children */
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     width: 100%;
-    height: calc(100vh - 60px);
+    height: 70vh;
+    min-height: 400px;
+    max-height: calc(100vh - 70px);
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    height: calc(100vh - 56px);
+    height: 70vh;
+    min-height: 350px;
+    max-height: calc(100vh - 60px);
   }
 `;
 
@@ -290,6 +296,39 @@ const ChangeMapView: React.FC<{ center: [number, number] | null }> = ({ center }
   return null;
 };
 
+// Component to handle map resize events
+const MapResizeHandler: React.FC = () => {
+  const map = useMap();
+
+  useEffect(() => {
+    const handleResize = () => {
+      // Small delay to ensure DOM has updated
+      setTimeout(() => {
+        map.invalidateSize();
+      }, 100);
+    };
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+    
+    // Also handle orientation change on mobile devices
+    window.addEventListener('orientationchange', handleResize);
+
+    // Initial invalidation to ensure proper sizing
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 100);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
+    };
+  }, [map]);
+
+  return null;
+};
+
 // Component to update the map's view when basemap changes
 // This is no longer needed as we're using TileLayer directly
 // Keeping the ChangeMapView component for port selection
@@ -333,6 +372,9 @@ const Map: React.FC<MapProps> = ({ onIndicatorExpandChange }) => {
   return (
     <MapWrapper>
       <StyledMapContainer center={[20, 0]} zoom={2} scrollWheelZoom={true} zoomControl={false}>
+        {/* Handle map resize events */}
+        <MapResizeHandler />
+        
         {/* Change the map view when the selected port changes */}
         {selectedPort && <ChangeMapView center={selectedPort.coordinates} />}
 

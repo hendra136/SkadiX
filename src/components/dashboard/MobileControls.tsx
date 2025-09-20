@@ -7,7 +7,7 @@ const MobileControlsContainer = styled.div<{ isIndicatorExpanded?: boolean }>`
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     display: flex;
     position: fixed;
-    top: ${({ isIndicatorExpanded }) => isIndicatorExpanded ? '520px' : '140px'};
+    top: ${({ isIndicatorExpanded }) => isIndicatorExpanded ? '520px' : '90px'};
     right: 20px;
     z-index: 450;
     gap: 10px;
@@ -16,7 +16,7 @@ const MobileControlsContainer = styled.div<{ isIndicatorExpanded?: boolean }>`
   }
   
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    top: ${({ isIndicatorExpanded }) => isIndicatorExpanded ? '500px' : '130px'};
+    top: ${({ isIndicatorExpanded }) => isIndicatorExpanded ? '500px' : '80px'};
     right: 15px;
     gap: 8px;
    }

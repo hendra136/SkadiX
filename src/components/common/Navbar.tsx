@@ -1,45 +1,36 @@
-import React, { useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import styled from 'styled-components';
-import { useAppContext } from '../../context/AppContext';
-import { languages } from '../../translations';
-import ModernSelect from './ModernSelect';
+import React, { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import styled from "styled-components";
+import { useAppContext } from "../../context/AppContext";
+import { languages } from "../../translations";
+import ModernSelect from "./ModernSelect";
 
 const NavbarContainer = styled.nav`
-  display: grid;
-  grid-template-columns: auto 1fr;
+  display: flex;
   align-items: center;
-  justify-items: stretch;
+  justify-content: space-between;
   padding: 0 3rem;
-  gap: 3rem;
   min-height: 70px;
-  
+
   /* Modern Glass Morphism Background */
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.95) 0%, 
-    rgba(248, 250, 252, 0.9) 50%, 
-    rgba(241, 245, 249, 0.85) 100%
-  );
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 50%, rgba(241, 245, 249, 0.85) 100%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  
+
   /* Enhanced Border and Shadow */
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 
-    0 8px 32px rgba(0, 61, 130, 0.08),
-    0 4px 16px rgba(0, 61, 130, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  
+  box-shadow: 0 8px 32px rgba(0, 61, 130, 0.08), 0 4px 16px rgba(0, 61, 130, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
   height: 70px;
-  
+
   /* Smooth transitions */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  
+
   /* Subtle animation on scroll */
   &::before {
     content: "";
@@ -48,34 +39,28 @@ const NavbarContainer = styled.nav`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, 
-      rgba(0, 61, 130, 0.02) 0%, 
-      rgba(0, 119, 182, 0.01) 100%
-    );
+    background: linear-gradient(135deg, rgba(0, 61, 130, 0.02) 0%, rgba(0, 119, 182, 0.01) 100%);
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-  
+
   &:hover::before {
     opacity: 1;
   }
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.lg || '992px'}) {
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg || "992px"}) {
     padding: 1rem 2rem;
-    gap: 1.5rem;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     padding: 0.75rem 1.5rem;
     height: 70px;
-    gap: 1rem;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: 0.5rem 1rem;
     height: 60px;
-    gap: 0.5rem;
   }
 `;
 
@@ -87,59 +72,66 @@ const Logo = styled(Link)`
   text-decoration: none;
   position: relative;
   z-index: 2;
-  justify-self: start;
   padding: 1rem 0;
-  
+  margin-right: auto; /* <-- TAMBAHKAN BARIS INI */
+
   /* Modern gradient text */
-  background: linear-gradient(135deg, 
-    ${({ theme }) => theme.colors.primary} 0%, 
-    ${({ theme }) => theme.colors.secondary} 50%,
-    #0077b6 100%
-  );
+  background: linear-gradient(135deg, ${({ theme }) => theme.colors.primary} 0%, ${({ theme }) => theme.colors.secondary} 50%, #0077b6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  
+
   /* Enhanced typography */
   font-family: ${({ theme }) => theme.fonts.heading};
   letter-spacing: -0.02em;
-  
+
   /* Smooth transitions */
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  
+
   /* Hover effects */
   &:hover {
     transform: translateY(-1px);
     filter: brightness(1.1);
-    
+
     img {
       transform: scale(1.05) rotate(2deg);
     }
   }
-  
+
   img {
     height: 42px;
     margin-right: 0.6rem;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     filter: drop-shadow(0 2px 8px rgba(0, 61, 130, 0.2));
   }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: 1.4rem;
-    
+
     img {
       height: 38px;
       margin-right: 0.5rem;
     }
   }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: 1.3rem;
-    
+
     img {
       height: 34px;
       margin-right: 0.4rem;
     }
+  }
+`;
+
+const CenterContainer = styled.div`
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  /* Hapus position, left, dan transform */
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: none;
   }
 `;
 
@@ -148,18 +140,13 @@ const NavLinks = styled.div`
   align-items: center;
   gap: 2rem;
   position: relative;
-  z-index: 2;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.xl || '1200px'}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.xl || "1200px"}) {
     gap: 1.5rem;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.lg || '992px'}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg || "992px"}) {
     gap: 1.2rem;
-  }
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    display: none;
   }
 `;
 
@@ -171,14 +158,14 @@ const NavLink = styled(Link)`
   border-radius: 8px;
   position: relative;
   overflow: hidden;
-  
+
   /* Enhanced typography for better readability */
   font-size: 0.95rem;
   letter-spacing: -0.01em;
-  
+
   /* Smooth transitions */
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  
+
   /* Glass morphism background on hover */
   &::before {
     content: "";
@@ -187,74 +174,61 @@ const NavLink = styled(Link)`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, 
-      rgba(0, 61, 130, 0.1) 0%, 
-      rgba(0, 119, 182, 0.08) 100%
-    );
+    background: linear-gradient(135deg, rgba(0, 61, 130, 0.1) 0%, rgba(0, 119, 182, 0.08) 100%);
     border-radius: 12px;
     opacity: 0;
     transform: scale(0.8);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: -1;
   }
-  
+
   &:hover {
     color: ${({ theme }) => theme.colors.primary};
     transform: translateY(-2px);
-    
+
     &::before {
       opacity: 1;
       transform: scale(1);
     }
   }
-  
+
   &.active {
     color: ${({ theme }) => theme.colors.primary};
     font-weight: 700;
-    
+
     &::before {
       opacity: 1;
       transform: scale(1);
-      background: linear-gradient(135deg, 
-        rgba(0, 61, 130, 0.15) 0%, 
-        rgba(0, 119, 182, 0.12) 100%
-      );
+      background: linear-gradient(135deg, rgba(0, 61, 130, 0.15) 0%, rgba(0, 119, 182, 0.12) 100%);
     }
   }
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.xl || '1200px'}) {
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xl || "1200px"}) {
     padding: 0.6rem 1rem;
     font-size: 0.9rem;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.lg || '992px'}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg || "992px"}) {
     padding: 0.5rem 0.75rem;
     font-size: 0.85rem;
   }
 `;
 
-
-
 const RightContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 2rem;
+  gap: 1rem;
   position: relative;
   z-index: 2;
-  width: 100%;
   padding: 1rem 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.xl || '1200px'}) {
-    gap: 1.5rem;
+  @media (max-width: ${({ theme }) => theme.breakpoints.xl || "1200px"}) {
+    gap: 0.75rem;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.lg || '992px'}) {
-    gap: 1rem;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    display: none;
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg || "992px"}) {
+    gap: 0.5rem;
   }
 `;
 
@@ -262,13 +236,18 @@ const RightSection = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  gap: 0.5rem;
   position: relative;
   z-index: 2;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    gap: 0.75rem;
+  }
 `;
 
 const NavbarSelect = styled(ModernSelect)`
   margin-left: 0;
-  
+
   /* Compact design with fixed dimensions and specific styling */
   & select {
     width: 120px !important;
@@ -287,41 +266,55 @@ const NavbarSelect = styled(ModernSelect)`
     display: flex !important;
     align-items: center !important;
     box-sizing: border-box !important;
-    
+
     &:focus {
-      border-color: #007BFF !important;
+      border-color: #007bff !important;
       outline: none !important;
       box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1) !important;
     }
-    
+
     &:hover {
-      border-color: #007BFF !important;
+      border-color: #007bff !important;
     }
   }
-  
+
   /* Option styling for hover effects */
   & select option {
     background: #ffffff !important;
     color: #333333 !important;
     padding: 8px 12px !important;
-    
+
     &:hover {
       background: #f5f5f5 !important;
     }
-    
+
     &:checked,
     &:selected {
-      background: #007BFF !important;
+      background: #007bff !important;
       color: #ffffff !important;
     }
   }
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.xl || '1200px'}) {
-    margin-left: 0.6rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    & select {
+      width: 100px !important;
+      min-width: 100px !important;
+      max-width: 100px !important;
+      height: 32px !important;
+      font-size: 12px !important;
+      padding: 4px 20px 4px 6px !important;
+    }
   }
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.lg || '992px'}) {
-    margin-left: 0.5rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    & select {
+      width: 90px !important;
+      min-width: 90px !important;
+      max-width: 90px !important;
+      height: 30px !important;
+      font-size: 11px !important;
+      padding: 3px 18px 3px 5px !important;
+    }
   }
 `;
 
@@ -337,31 +330,30 @@ const MobileMenuButton = styled.button`
   font-weight: 600;
   min-height: 36px;
   min-width: 36px;
-  margin-left: 1rem;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0px 2px 8px rgba(0, 61, 130, 0.3);
-  
+
   &:hover {
     background: linear-gradient(135deg, #002752 0%, #001a3d 100%);
     transform: scale(1.05);
     box-shadow: 0px 4px 12px rgba(0, 61, 130, 0.4);
   }
-  
+
   &:focus {
     box-shadow: 0px 4px 12px rgba(0, 61, 130, 0.4), 0 0 0 2px rgba(0, 61, 130, 0.3);
     outline: none;
   }
-  
+
   &:active {
     background: linear-gradient(135deg, #001a3d 0%, #000f26 100%);
     transform: scale(1);
     box-shadow: 0px 2px 8px rgba(0, 61, 130, 0.3);
   }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     display: block;
   }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: 1.1rem;
     padding: 6px 10px;
@@ -382,29 +374,22 @@ const MobileMenu = styled.div<{ isOpen: boolean }>`
   max-height: calc(100vh - 70px);
   overflow-y: auto;
   padding: 1.5rem;
-  transform: ${({ isOpen }) => isOpen ? 'translateY(0)' : 'translateY(-100%)'};
-  opacity: ${({ isOpen }) => isOpen ? '1' : '0'};
-  visibility: ${({ isOpen }) => isOpen ? 'visible' : 'hidden'};
-  
+  transform: ${({ isOpen }) => (isOpen ? "translateY(0)" : "translateY(-100%)")};
+  opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
+  visibility: ${({ isOpen }) => (isOpen ? "visible" : "hidden")};
+
   /* Modern glass morphism background */
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.95) 0%, 
-    rgba(248, 250, 252, 0.9) 50%, 
-    rgba(241, 245, 249, 0.85) 100%
-  );
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 50%, rgba(241, 245, 249, 0.85) 100%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  
+
   /* Enhanced border and shadow */
   border-top: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 
-    0 8px 32px rgba(0, 61, 130, 0.12),
-    0 4px 16px rgba(0, 61, 130, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  
+  box-shadow: 0 8px 32px rgba(0, 61, 130, 0.12), 0 4px 16px rgba(0, 61, 130, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
   /* Enhanced smooth animations */
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     top: 70px;
     max-height: calc(100vh - 70px);
@@ -415,10 +400,10 @@ const MobileMenu = styled.div<{ isOpen: boolean }>`
     max-height: calc(100vh - 60px);
     padding: 1rem;
   }
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     display: none !important;
-   }
+  }
 `;
 
 const MobileNavLink = styled(Link)`
@@ -431,13 +416,13 @@ const MobileNavLink = styled(Link)`
   margin-bottom: 0.5rem;
   position: relative;
   overflow: hidden;
-  
+
   /* Enhanced typography */
   letter-spacing: -0.01em;
-  
+
   /* Smooth transitions */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  
+
   /* Glass morphism background on hover */
   &::before {
     content: "";
@@ -446,31 +431,28 @@ const MobileNavLink = styled(Link)`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, 
-      rgba(0, 61, 130, 0.08) 0%, 
-      rgba(0, 119, 182, 0.06) 100%
-    );
+    background: linear-gradient(135deg, rgba(0, 61, 130, 0.08) 0%, rgba(0, 119, 182, 0.06) 100%);
     border-radius: 12px;
     opacity: 0;
     transform: scale(0.9);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: -1;
   }
-  
+
   &:last-child {
     margin-bottom: 0;
   }
-  
+
   &:hover {
     color: ${({ theme }) => theme.colors.primary};
     transform: translateX(8px);
-    
+
     &::before {
       opacity: 1;
       transform: scale(1);
     }
   }
-  
+
   &:active {
     transform: translateX(4px) scale(0.98);
   }
@@ -493,10 +475,10 @@ const Navbar: React.FC = () => {
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
     setIsMenuOpen(false);
-    
-    if (location.pathname !== '/') {
+
+    if (location.pathname !== "/") {
       // If not on landing page, navigate to landing page first
-      navigate('/');
+      navigate("/");
       // Wait for navigation to complete, then scroll
       setTimeout(() => {
         scrollToContact();
@@ -508,11 +490,11 @@ const Navbar: React.FC = () => {
   };
 
   const scrollToContact = () => {
-    const contactElement = document.getElementById('contact');
+    const contactElement = document.getElementById("contact");
     if (contactElement) {
-      contactElement.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
+      contactElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
       });
     }
   };
@@ -524,48 +506,47 @@ const Navbar: React.FC = () => {
           <img src="/logo.svg" alt="SkadiX - Cold-Chain Logistics Infrastructure" />
           <span>SkadiX</span>
         </Logo>
-        
-        <RightContainer>
+
+        <CenterContainer>
           <NavLinks>
-            <NavLink to="/">{t('navbar.home')}</NavLink>
-            <NavLink to="/case-studies">{t('navbar.caseStudies')}</NavLink>
-            <NavLink to="/reports">{t('navbar.reports')}</NavLink>
-            <NavLink to="#" onClick={handleContactClick}>{t('navbar.contact')}</NavLink>
+            <NavLink to="/">{t("navbar.home")}</NavLink>
+            <NavLink to="/case-studies">{t("navbar.caseStudies")}</NavLink>
+            <NavLink to="/reports">{t("navbar.reports")}</NavLink>
+            <NavLink to="#" onClick={handleContactClick}>
+              {t("navbar.contact")}
+            </NavLink>
           </NavLinks>
-          
+        </CenterContainer>
+
+        <RightContainer>
           <RightSection>
             <NavbarSelect
               value={language}
               onChange={handleLanguageChange}
-              options={languages.map(lang => ({
+              options={languages.map((lang) => ({
                 value: lang.code,
-                label: lang.name
+                label: lang.name,
               }))}
               size="small"
             />
-            <MobileMenuButton onClick={toggleMenu}>
-              {isMenuOpen ? '✕' : '☰'}
-            </MobileMenuButton>
+            <MobileMenuButton onClick={toggleMenu}>{isMenuOpen ? "✕" : "☰"}</MobileMenuButton>
           </RightSection>
         </RightContainer>
       </NavbarContainer>
-      
+
       <MobileMenu isOpen={isMenuOpen}>
-        <MobileNavLink to="/" onClick={() => setIsMenuOpen(false)}>{t('navbar.home')}</MobileNavLink>
-        <MobileNavLink to="/case-studies" onClick={() => setIsMenuOpen(false)}>{t('navbar.caseStudies')}</MobileNavLink>
-        <MobileNavLink to="/reports" onClick={() => setIsMenuOpen(false)}>{t('navbar.reports')}</MobileNavLink>
-        <MobileNavLink to="#" onClick={handleContactClick}>{t('navbar.contact')}</MobileNavLink>
-        
-        <ModernSelect
-          value={language}
-          onChange={handleLanguageChange}
-          options={languages.map(lang => ({
-            value: lang.code,
-            label: lang.name
-          }))}
-          size="medium"
-          style={{ marginTop: '1rem' }}
-        />
+        <MobileNavLink to="/" onClick={() => setIsMenuOpen(false)}>
+          {t("navbar.home")}
+        </MobileNavLink>
+        <MobileNavLink to="/case-studies" onClick={() => setIsMenuOpen(false)}>
+          {t("navbar.caseStudies")}
+        </MobileNavLink>
+        <MobileNavLink to="/reports" onClick={() => setIsMenuOpen(false)}>
+          {t("navbar.reports")}
+        </MobileNavLink>
+        <MobileNavLink to="#" onClick={handleContactClick}>
+          {t("navbar.contact")}
+        </MobileNavLink>
       </MobileMenu>
     </>
   );

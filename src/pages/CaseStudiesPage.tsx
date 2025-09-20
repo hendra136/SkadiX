@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
 import Button from "../components/common/Button";
+import CallToAction from "../components/landing/CallToAction";
 import { useAppContext } from "../context/AppContext";
 
 interface CaseStudy {
@@ -258,43 +259,7 @@ const Tag = styled.span`
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
 `;
 
-const CTASection = styled.section`
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, ${({ theme }) => theme.colors.primary}, ${({ theme }) => theme.colors.secondary});
-  color: ${({ theme }) => theme.colors.white};
-  text-align: center;
-  margin-top: 4rem;
-  border-radius: 5px;
-`;
 
-const CTATitle = styled.h2`
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  font-weight: 700;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: 2rem;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 1.75rem;
-  }
-`;
-
-const CTADescription = styled.p`
-  font-size: 1.25rem;
-  max-width: 600px;
-  margin: 0 auto 2.5rem;
-  line-height: 1.6;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: 1.125rem;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 1rem;
-  }
-`;
 
 const CaseStudiesPage: React.FC = () => {
   const { t } = useAppContext();
@@ -360,13 +325,7 @@ const CaseStudiesPage: React.FC = () => {
         </CaseStudiesGrid>
       </MainContent>
 
-      <CTASection>
-        <CTATitle>{t("caseStudies.cta.title")}</CTATitle>
-        <CTADescription>{t("caseStudies.cta.description")}</CTADescription>
-        <Button as={Link} to="/dashboard" variant="generateReport" size="large">
-          {t("caseStudies.cta.button")}
-        </Button>
-      </CTASection>
+      <CallToAction />
 
       <Footer />
     </CaseStudiesPageContainer>

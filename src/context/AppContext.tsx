@@ -115,7 +115,6 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({ children
 
   // Generate report
   const generateReport = () => {
-    const reportTitle = t("dashboard.generateReport");
     const portName = selectedPort?.name || "Unknown Port";
     const scenarioName = selectedScenario?.name || "Unknown Scenario";
 

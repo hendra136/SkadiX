@@ -44,4 +44,49 @@ export const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
     width: 100%;
     height: 100%;
   }
+
+  /* Responsive improvements */
+  @media (max-width: 768px) {
+    body {
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    /* Ensure proper touch targets on mobile */
+    button, a, input, select {
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    /* Prevent horizontal scroll on mobile */
+    html, body {
+      overflow-x: hidden;
+      max-width: 100vw;
+    }
+
+    /* Improve text readability on mobile */
+    h1, h2, h3, h4, h5, h6 {
+      line-height: 1.3;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      margin-bottom: 0.75rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    body {
+      font-size: 13px;
+    }
+
+    /* Smaller spacing on very small screens */
+    h1, h2, h3, h4, h5, h6 {
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 0.5rem;
+    }
+  }
 `;
