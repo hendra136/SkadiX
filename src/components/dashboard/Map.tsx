@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { MapContainer, TileLayer, Marker, Popup, Circle, useMap } from "react-leaflet";
-import Button from "../common/Button";
 import ModernZoomControl from "../common/ModernZoomControl";
 import { useAppContext } from "../../context/AppContext";
 import { basemaps } from "../../data/mockData";
@@ -69,6 +68,13 @@ const StyledMapContainer = styled(MapContainer)`
     margin-top: 0 !important;
   }
 
+  /* Hide Leaflet controls on mobile */
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    .leaflet-control {
+      display: none !important;
+    }
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     .leaflet-top {
       top: 110px;
@@ -97,7 +103,7 @@ const StyledMapContainer = styled(MapContainer)`
 const Legend = styled.div`
   position: absolute;
   bottom: 20px;
-  left: 320px; /* Position after sidebar width (300px) + margin */
+  left: 20px;
   z-index: 450;
   
   /* Modern Glass Morphism Background */
@@ -140,13 +146,12 @@ const Legend = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    left: 310px; /* Adjust for smaller sidebar on lg screens */
     padding: 0.9rem;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     bottom: 20px;
-    left: 20px; /* Back to left when sidebar is hidden on mobile */
+    left: 20px;
     max-width: 200px;
     font-size: 0.8rem;
     padding: 0.8rem;
@@ -155,7 +160,7 @@ const Legend = styled.div`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     bottom: 20px;
-    left: 15px;
+    left: 20px;
     max-width: 180px;
     font-size: 0.75rem;
     padding: 0.7rem;
@@ -236,52 +241,7 @@ const LegendLabel = styled.span`
   line-height: 1.3;
 `;
 
-const ReportButtonContainer = styled.div<{ isCoastalActive: boolean }>`
-  position: absolute;
-  z-index: 1001;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  
-  /* Dynamic positioning based on Coastal Submergence Analysis state */
-  ${({ isCoastalActive }) => isCoastalActive ? `
-    /* When Coastal Analysis is active - center bottom position */
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-left: 0;
-  ` : `
-    /* Default position - bottom right */
-    bottom: 20px;
-    right: 20px;
-    transform: none;
-    margin-left: 0;
-  `}
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    ${({ isCoastalActive }) => !isCoastalActive && `
-      right: 15px;
-    `}
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    ${({ isCoastalActive }) => isCoastalActive ? `
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-    ` : `
-      bottom: 20px;
-      right: 10px;
-      transform: none;
-    `}
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    /* Always center on mobile for better accessibility */
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-left: 0;
-  }
-`;
 
 // Component to change the map's center when the selected port changes
 const ChangeMapView: React.FC<{ center: [number, number] | null }> = ({ center }) => {
@@ -338,7 +298,7 @@ interface MapProps {
 }
 
 const Map: React.FC<MapProps> = ({ onIndicatorExpandChange }) => {
-  const { selectedPort, basemap, generateReport, showCoastalSubmergence, riskData, t } = useAppContext();
+  const { selectedPort, basemap, showCoastalSubmergence, riskData, t } = useAppContext();
   const [selectedBasemap, setSelectedBasemap] = useState(basemaps.find((b) => b.id === basemap) || basemaps[0]);
 
   useEffect(() => {
@@ -387,7 +347,7 @@ const Map: React.FC<MapProps> = ({ onIndicatorExpandChange }) => {
         />
 
         {/* Modern Zoom Control */}
-        <ModernZoomControl position="top-left" />
+        <ModernZoomControl position="bottom-right" />
 
         {/* Port marker */}
         {selectedPort && (
@@ -476,64 +436,7 @@ const Map: React.FC<MapProps> = ({ onIndicatorExpandChange }) => {
         )}
       </Legend>
 
-      {/* Generate Report Button */}
-      <ReportButtonContainer isCoastalActive={showCoastalSubmergence}>
-          <Button 
-            variant="primary" 
-            size="medium" 
-            onClick={generateReport}
-            onFocus={(e) => {
-              const target = e.target as HTMLButtonElement;
-              target.style.boxShadow = showCoastalSubmergence 
-                ? '0px 8px 20px rgba(0, 123, 182, 0.5), 0 0 0 3px rgba(0, 123, 255, 0.3)' 
-                : '0px 6px 16px rgba(0, 123, 182, 0.4), 0 0 0 3px rgba(0, 123, 255, 0.3)';
-            }}
-            onBlur={(e) => {
-              const target = e.target as HTMLButtonElement;
-              target.style.boxShadow = showCoastalSubmergence 
-                ? '0px 6px 16px rgba(0, 123, 182, 0.4)' 
-                : '0px 4px 12px rgba(0, 123, 182, 0.3)';
-            }}
-            onMouseEnter={(e) => {
-              const target = e.target as HTMLButtonElement;
-              target.style.transform = showCoastalSubmergence ? 'scale(1.08)' : 'scale(1.03)';
-              target.style.boxShadow = showCoastalSubmergence 
-                ? '0px 8px 20px rgba(0, 123, 182, 0.5)' 
-                : '0px 6px 16px rgba(0, 123, 182, 0.4)';
-            }}
-            onMouseLeave={(e) => {
-              const target = e.target as HTMLButtonElement;
-              target.style.transform = showCoastalSubmergence ? 'scale(1.05)' : 'scale(1)';
-              target.style.boxShadow = showCoastalSubmergence 
-                ? '0px 6px 16px rgba(0, 123, 182, 0.4)' 
-                : '0px 4px 12px rgba(0, 123, 182, 0.3)';
-            }}
-            style={{
-              boxShadow: showCoastalSubmergence 
-                ? '0px 6px 16px rgba(0, 123, 182, 0.4)' 
-                : '0px 4px 12px rgba(0, 123, 182, 0.3)',
-              fontWeight: '600',
-              padding: '14px 28px',
-              fontSize: '0.95rem',
-              borderRadius: '8px',
-              transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-              background: showCoastalSubmergence
-                ? 'linear-gradient(135deg, #004085 0%, #002752 100%)'
-                : 'linear-gradient(135deg, #0056b3 0%, #003d82 100%)',
-              border: 'none',
-              transform: showCoastalSubmergence ? 'scale(1.05)' : 'scale(1)',
-              color: '#ffffff',
-              minHeight: '48px',
-              cursor: 'pointer',
-              outline: 'none',
-              position: 'relative',
-            }}
-            aria-label={`${t("dashboard.generateReport")} - ${showCoastalSubmergence ? 'Coastal analysis active' : 'Default mode'}`}
-            tabIndex={0}
-          >
-            {t("dashboard.generateReport")}
-          </Button>
-        </ReportButtonContainer>
+
 
       {/* Coastal Submergence Indicator */}
       {showCoastalSubmergence && (

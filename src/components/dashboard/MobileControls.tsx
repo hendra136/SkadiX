@@ -1,108 +1,77 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FiSliders } from 'react-icons/fi';
 
-const MobileControlsContainer = styled.div<{ isIndicatorExpanded?: boolean }>`
+const FABContainer = styled.div`
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1001;
   display: none;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    display: flex;
-    position: fixed;
-    top: ${({ isIndicatorExpanded }) => isIndicatorExpanded ? '520px' : '90px'};
-    right: 20px;
-    z-index: 450;
-    gap: 10px;
-    flex-direction: column;
-    transition: top 0.3s ease;
+    display: block;
   }
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    top: ${({ isIndicatorExpanded }) => isIndicatorExpanded ? '500px' : '80px'};
-    right: 15px;
-    gap: 8px;
-   }
 `;
 
-const ControlButton = styled.button<{ active?: boolean }>`
-  background: ${({ active }) => active 
-    ? 'linear-gradient(135deg, #003d82 0%, #002752 100%)' 
-    : 'linear-gradient(135deg, #6c757d 0%, #495057 100%)'};
-  color: #ffffff;
+const FAB = styled.button`
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, 
+    ${({ theme }) => theme.colors?.primary || '#0077b6'} 0%, 
+    ${({ theme }) => theme.colors?.secondary || '#005f73'} 100%
+  );
   border: none;
-  border-radius: 8px;
-  padding: 12px 20px;
-  min-height: 44px;
-  min-width: 120px;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  font-size: 0.85rem;
-  font-weight: 600;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: ${({ active }) => active 
-    ? '0px 4px 12px rgba(0, 61, 130, 0.3)' 
-    : '0px 4px 12px rgba(108, 117, 125, 0.3)'};
+  box-shadow: 
+    0 8px 24px rgba(0, 119, 182, 0.3),
+    0 4px 12px rgba(0, 119, 182, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   
   &:hover {
-    background: ${({ active }) => active 
-      ? 'linear-gradient(135deg, #002752 0%, #001a3d 100%)' 
-      : 'linear-gradient(135deg, #5a6268 0%, #343a40 100%)'};
-    transform: scale(1.03);
-    box-shadow: ${({ active }) => active 
-      ? '0px 6px 16px rgba(0, 61, 130, 0.4)' 
-      : '0px 6px 16px rgba(108, 117, 125, 0.4)'};
-  }
-  
-  &:focus {
-    box-shadow: ${({ active }) => active 
-      ? '0px 6px 16px rgba(0, 61, 130, 0.4), 0 0 0 3px rgba(0, 61, 130, 0.3)' 
-      : '0px 6px 16px rgba(108, 117, 125, 0.4), 0 0 0 3px rgba(108, 117, 125, 0.3)'};
-    outline: none;
+    transform: scale(1.1);
+    box-shadow: 
+      0 12px 32px rgba(0, 119, 182, 0.4),
+      0 6px 16px rgba(0, 119, 182, 0.3);
   }
   
   &:active {
-    background: ${({ active }) => active 
-      ? 'linear-gradient(135deg, #001a3d 0%, #000f26 100%)' 
-      : 'linear-gradient(135deg, #343a40 0%, #212529 100%)'};
-    transform: scale(1);
-    box-shadow: ${({ active }) => active 
-      ? '0px 4px 12px rgba(0, 61, 130, 0.3)' 
-      : '0px 4px 12px rgba(108, 117, 125, 0.3)'};
+    transform: scale(0.95);
   }
   
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 10px 16px;
-    font-size: 0.8rem;
-    min-height: 40px;
-    min-width: 100px;
-    border-radius: 6px;
-  }
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
-    padding: 8px 12px;
-    font-size: 0.75rem;
-    min-height: 36px;
-    min-width: 90px;
-    border-radius: 6px;
+  &:focus {
+    outline: none;
+    box-shadow: 
+      0 8px 24px rgba(0, 119, 182, 0.3),
+      0 4px 12px rgba(0, 119, 182, 0.2),
+      0 0 0 3px rgba(0, 123, 255, 0.3);
   }
 `;
 
 interface MobileControlsProps {
   isSidebarOpen: boolean;
   toggleSidebar: () => void;
-  isIndicatorExpanded?: boolean;
 }
 
-const MobileControls: React.FC<MobileControlsProps> = ({ isSidebarOpen, toggleSidebar, isIndicatorExpanded }) => {
+const MobileControls: React.FC<MobileControlsProps> = ({ 
+  isSidebarOpen, 
+  toggleSidebar 
+}) => {
   return (
-    <MobileControlsContainer isIndicatorExpanded={isIndicatorExpanded}>
-      <ControlButton 
-        active={isSidebarOpen} 
+    <FABContainer>
+      <FAB
         onClick={toggleSidebar}
+        aria-label={isSidebarOpen ? 'Close settings' : 'Open settings'}
       >
-        {isSidebarOpen ? 'Hide Settings' : 'Show Settings'}
-      </ControlButton>
-    </MobileControlsContainer>
+        {(FiSliders as any)({ size: 24 })}
+      </FAB>
+    </FABContainer>
   );
 };
 

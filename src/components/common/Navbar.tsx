@@ -325,13 +325,21 @@ const MobileMenuButton = styled.button`
   font-size: 1.2rem;
   color: #ffffff;
   cursor: pointer;
-  padding: 8px 12px;
+  padding: 0;
   border-radius: 6px;
   font-weight: 600;
   min-height: 36px;
   min-width: 36px;
+  width: 36px;
+  height: 36px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0px 2px 8px rgba(0, 61, 130, 0.3);
+  
+  /* Perfect centering for the icon */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 
   &:hover {
     background: linear-gradient(135deg, #002752 0%, #001a3d 100%);
@@ -351,14 +359,16 @@ const MobileMenuButton = styled.button`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    display: block;
+    display: flex;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: 1.1rem;
-    padding: 6px 10px;
+    padding: 0;
     min-height: 32px;
     min-width: 32px;
+    width: 32px;
+    height: 32px;
     border-radius: 4px;
   }
 `;

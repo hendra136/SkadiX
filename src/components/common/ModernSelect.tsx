@@ -29,19 +29,22 @@ const selectStyles = {
     width: 100%;
     font-weight: 500;
     color: #333333;
-    background: #ffffff;
-    border: 1px solid #d1d5db;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 8px;
     outline: none;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230077b6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right 12px center;
     background-size: 16px;
+    box-shadow: 0 2px 8px rgba(0, 61, 130, 0.08);
   `,
   small: 'padding: 8px 32px 8px 12px; font-size: 13px;',
   medium: 'padding: 12px 36px 12px 14px; font-size: 14px;',
@@ -53,48 +56,53 @@ const StyledSelect = styled.select`
   ${(props: any) => selectStyles[props['data-size'] as keyof typeof selectStyles] || selectStyles.medium}
 
   &:hover {
-    border-color: #3b82f6;
-    background: #f8fafc;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 119, 182, 0.5);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 100%);
+    box-shadow: 0 4px 16px rgba(0, 61, 130, 0.12);
+    transform: translateY(-1px);
   }
 
   &:focus {
-    border-color: #3b82f6;
-    background: #ffffff;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    border-color: rgba(0, 119, 182, 0.7);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 100%);
+    box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.1), 0 4px 16px rgba(0, 61, 130, 0.15);
   }
 
   &:focus-visible {
-    outline: 2px solid #3b82f6;
+    outline: 2px solid rgba(0, 119, 182, 0.5);
     outline-offset: 2px;
   }
 
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
-    background: #f3f4f6;
-    border-color: #d1d5db;
+    background: rgba(243, 244, 246, 0.8);
+    border-color: rgba(209, 213, 219, 0.5);
 
     &:hover {
-      background: #f3f4f6;
-      border-color: #d1d5db;
+      background: rgba(243, 244, 246, 0.8);
+      border-color: rgba(209, 213, 219, 0.5);
       box-shadow: none;
+      transform: none;
     }
   }
 
   option {
-    background: #ffffff;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%);
     color: #333333;
-    padding: 8px 12px;
+    padding: 10px 14px;
     font-weight: 500;
+    border: none;
+    margin: 2px 0;
 
     &:hover {
-      background: #f3f4f6;
+      background: linear-gradient(135deg, rgba(0, 119, 182, 0.1) 0%, rgba(0, 61, 130, 0.05) 100%);
+      color: #0077b6;
     }
 
     &:checked,
     &:selected {
-      background: #3b82f6;
+      background: linear-gradient(135deg, #0077b6 0%, #005f73 100%);
       color: #ffffff;
       font-weight: 600;
     }

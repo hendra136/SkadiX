@@ -1,22 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FiX } from 'react-icons/fi';
 import Button from '../common/Button';
 import ModernSelect from '../common/ModernSelect';
 import { useAppContext } from '../../context/AppContext';
 import { ports, scenarios } from '../../data/mockData';
 
-const SidebarContainer = styled.div`
-  width: 300px;
+const SidebarContainer = styled.div<{ isOpen: boolean }>`
+  width: 320px;
   height: 100vh;
-  padding: 2rem 1.5rem;
-  padding-top: 90px; /* Account for navbar height */
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 100;
-  overflow-y: auto;
-  
-  /* Modern Glass Morphism Background */
   background: linear-gradient(135deg, 
     rgba(255, 255, 255, 0.95) 0%, 
     rgba(248, 250, 252, 0.9) 50%, 
@@ -24,15 +16,51 @@ const SidebarContainer = styled.div`
   );
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  
-  /* Enhanced Border and Shadow */
   border-right: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 
-    8px 0 32px rgba(0, 61, 130, 0.08),
-    4px 0 16px rgba(0, 61, 130, 0.04),
-    inset -1px 0 0 rgba(255, 255, 255, 0.6);
+    0 8px 32px rgba(0, 61, 130, 0.12),
+    0 4px 16px rgba(0, 61, 130, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  padding: 1.5rem;
+  overflow-y: auto;
+  position: relative;
   
-  /* Subtle gradient overlay */
+  /* Desktop: Lower z-index than navbar, fixed position with proper padding-top */
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 900; /* Lower than navbar (1000) */
+    padding-top: calc(70px + 1.5rem); /* Navbar height + original padding */
+  }
+
+  /* Custom scrollbar */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(241, 245, 249, 0.3);
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, 
+      rgba(0, 119, 182, 0.6) 0%, 
+      rgba(0, 95, 115, 0.4) 100%
+    );
+    border-radius: 3px;
+    transition: background 0.3s ease;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, 
+      rgba(0, 119, 182, 0.8) 0%, 
+      rgba(0, 95, 115, 0.6) 100%
+    );
+  }
+
+  /* Glass effect enhancement */
   &::before {
     content: "";
     position: absolute;
@@ -40,99 +68,68 @@ const SidebarContainer = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(180deg, 
+    background: linear-gradient(135deg, 
       rgba(0, 61, 130, 0.02) 0%, 
       rgba(0, 119, 182, 0.01) 50%,
       transparent 100%
     );
     pointer-events: none;
+    z-index: -1;
   }
-  
-  /* Custom scrollbar */
-  &::-webkit-scrollbar {
-    width: 6px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    width: 300px;
+    padding: 1.25rem;
   }
-  
-  &::-webkit-scrollbar-track {
-    background: rgba(0, 61, 130, 0.05);
-    border-radius: 3px;
-  }
-  
-  &::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, 
-      rgba(0, 61, 130, 0.3) 0%, 
-      rgba(0, 119, 182, 0.2) 100%
-    );
-    border-radius: 3px;
-    
-    &:hover {
-      background: linear-gradient(135deg, 
-        rgba(0, 61, 130, 0.5) 0%, 
-        rgba(0, 119, 182, 0.4) 100%
-      );
-    }
-  }
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints?.lg || '992px'}) {
-    width: 270px;
-    padding: 1.5rem 1rem;
-    padding-top: 80px;
-  }
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints?.md || '768px'}) {
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     position: fixed;
     top: 0;
-    left: -100%;
-    width: 100%;
-    max-width: 320px;
-    height: 100vh;
-    z-index: 1001;
-    padding: 1rem 0.75rem;
-    padding-top: 80px;
-    transition: left 0.3s ease;
-    
-    /* Add backdrop blur overlay */
-    &::after {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 320px;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(4px);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      z-index: -1;
-    }
-    
-    &.open {
-      left: 0;
-      
-      &::after {
-        opacity: 1;
-        visibility: visible;
-      }
-    }
+    left: 0;
+    width: 280px;
+    z-index: 1001; /* Higher than navbar for mobile overlay */
+    transform: translateX(${({ isOpen }) => (isOpen ? '0' : '-100%')});
+    transition: transform 0.3s ease;
+    box-shadow: ${({ isOpen }) => isOpen ? `
+      0 16px 64px rgba(0, 61, 130, 0.2),
+      0 8px 32px rgba(0, 61, 130, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6)
+    ` : 'none'};
   }
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints?.sm || '576px'}) {
-    max-width: 280px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 260px;
     padding: 1rem;
-    padding-top: 70px;
-    
-    &::after {
-      left: 280px;
-    }
+  }
+`;
+
+const SidebarHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  position: relative;
+  
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      ${({ theme }) => theme.colors?.primary || '#0077b6'} 0%, 
+      ${({ theme }) => theme.colors?.secondary || '#005f73'} 50%,
+      transparent 100%
+    );
+    border-radius: 1px;
   }
 `;
 
 const SidebarTitle = styled.h2`
   font-size: 1.4rem;
   font-weight: 700;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
   position: relative;
   z-index: 2;
   
@@ -149,22 +146,35 @@ const SidebarTitle = styled.h2`
   /* Enhanced typography */
   font-family: ${({ theme }) => theme.fonts?.heading || 'Arial, sans-serif'};
   letter-spacing: -0.02em;
+`;
+
+const CloseButton = styled.button`
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: ${({ theme }) => theme.colors?.text || '#333'};
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
   
-  /* Modern border with gradient */
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, 
-      ${({ theme }) => theme.colors?.primary || '#0077b6'} 0%, 
-      ${({ theme }) => theme.colors?.secondary || '#005f73'} 50%,
-      transparent 100%
-    );
-    border-radius: 1px;
+  &:hover {
+    background: rgba(0, 119, 182, 0.1);
+    color: ${({ theme }) => theme.colors?.primary || '#0077b6'};
   }
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
+const GenerateReportSection = styled.div`
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0, 119, 182, 0.1);
 `;
 
 const SidebarSection = styled.div`
@@ -222,6 +232,19 @@ const Toggle = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 0.25rem;
+  padding: 0.25rem 0;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  
+  /* Better touch target for mobile */
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 0.5rem 0.25rem;
+    margin-bottom: 0.5rem;
+    
+    &:hover {
+      background-color: rgba(0, 119, 182, 0.05);
+    }
+  }
 `;
 
 const ToggleLabel = styled.label`
@@ -229,10 +252,56 @@ const ToggleLabel = styled.label`
   cursor: pointer;
   font-size: 0.9rem;
   color: ${({ theme }) => theme.colors?.text || '#333'};
+  flex: 1;
+  user-select: none;
+  transition: color 0.2s ease;
+  
+  /* Better mobile typography */
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 0.9rem;
+  }
+  
+  &:hover {
+    color: ${({ theme }) => theme.colors?.primary || '#0077b6'};
+  }
 `;
 
 const ToggleInput = styled.input`
+  margin-right: 0.5rem;
+  width: 16px;
+  height: 16px;
+  accent-color: ${({ theme }) => theme.colors?.primary || '#0077b6'};
   cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+  
+  /* Enhanced styling for better visual feedback */
+  &:hover {
+    transform: scale(1.1);
+  }
+  
+  &:focus {
+    outline: 2px solid rgba(0, 119, 182, 0.3);
+    outline-offset: 2px;
+  }
+  
+  /* Mobile: Larger touch-friendly checkboxes */
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.75rem;
+  }
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 18px;
+    height: 18px;
+    margin-right: 0.75rem;
+  }
 `;
 
 const SliderContainer = styled.div`
@@ -272,10 +341,11 @@ const ButtonsContainer = styled.div`
 
 
 interface SidebarProps {
-  isSidebarOpen: boolean;
+  isOpen?: boolean;
+  toggleSidebar?: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen }) => {
+const Sidebar: React.FC<SidebarProps> = ({ isOpen = false, toggleSidebar }) => {
   const {
     selectedPort,
     setSelectedPort,
@@ -284,6 +354,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen }) => {
     showCoastalSubmergence,
     setShowCoastalSubmergence,
     runSimulation,
+    generateReport,
     t
   } = useAppContext();
 
@@ -308,8 +379,13 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen }) => {
 
 
   return (
-    <SidebarContainer className={isSidebarOpen ? 'open' : ''}>
-      <SidebarTitle>{t('dashboard.controlPanel')}</SidebarTitle>
+    <SidebarContainer isOpen={isOpen}>
+      <SidebarHeader>
+        <SidebarTitle>{t('dashboard.controlPanel')}</SidebarTitle>
+        <CloseButton onClick={toggleSidebar} aria-label="Close sidebar">
+          {(FiX as any)({ size: 20 })}
+        </CloseButton>
+      </SidebarHeader>
       
       <SidebarSection>
         <SectionTitle>{t('dashboard.portSelection')}</SectionTitle>
@@ -586,6 +662,17 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen }) => {
           {t('dashboard.runSimulation')}
         </Button>
       </ButtonsContainer>
+      
+      <GenerateReportSection>
+        <Button 
+          variant="secondary"
+          size="medium"
+          fullWidth
+          onClick={generateReport}
+        >
+          {t('dashboard.generateReport')}
+        </Button>
+      </GenerateReportSection>
     </SidebarContainer>
   );
 };

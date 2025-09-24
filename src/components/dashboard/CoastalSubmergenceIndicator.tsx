@@ -8,30 +8,30 @@ const IndicatorContainer = styled.div`
   right: 20px;
   z-index: 500;
   background-color: ${({ theme }) => theme.colors.white};
-  padding: 24px;
+  padding: 16px;
   border-radius: ${({ theme }) => theme.borderRadius.large};
   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.12), 0px 2px 6px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(0, 0, 0, 0.05);
-  min-width: 320px;
-  max-width: 400px;
+  min-width: 280px;
+  max-width: 350px;
   word-wrap: break-word;
   overflow-wrap: break-word;
   backdrop-filter: blur(10px);
   background-color: rgba(255, 255, 255, 0.95);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    min-width: 300px;
-    max-width: 370px;
-    padding: 20px;
+    min-width: 260px;
+    max-width: 320px;
+    padding: 14px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     position: fixed;
     top: 70px;
     right: 10px;
-    min-width: 280px;
-    max-width: 340px;
-    padding: 18px;
+    min-width: 240px;
+    max-width: 280px;
+    padding: 12px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
@@ -41,38 +41,39 @@ const IndicatorContainer = styled.div`
     min-width: auto;
     max-width: none;
     width: calc(100% - 16px);
-    padding: 16px;
+    padding: 10px;
   }
 `;
 
 const IndicatorTitle = styled.h3`
-  margin: 0 0 16px 0;
-  font-size: 1.1rem;
+  margin: 0 0 12px 0;
+  font-size: 1rem;
   font-weight: 600;
   color: ${({ theme }) => theme.colors.primary};
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  line-height: 1.4;
+  gap: 8px;
+  line-height: 1.3;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  padding-bottom: 8px;
-  border-bottom: 2px solid ${({ theme }) => theme.colors.gray};
+  padding-bottom: 6px;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: 1rem;
+    font-size: 0.95rem;
     flex-wrap: wrap;
-    margin-bottom: 14px;
-    padding-bottom: 6px;
+    margin-bottom: 10px;
+    padding-bottom: 4px;
+    gap: 6px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 0.95rem;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-    margin-bottom: 12px;
-    padding-bottom: 4px;
+    font-size: 0.9rem;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+    padding-bottom: 3px;
   }
 `;
 
@@ -106,63 +107,63 @@ const StatusItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 12px;
-  padding: 12px;
+  margin-bottom: 8px;
+  padding: 8px;
   background-color: ${({ theme }) => theme.colors.gray};
   border-radius: ${({ theme }) => theme.borderRadius.small};
-  gap: 16px;
-  min-height: 48px;
+  gap: 12px;
+  min-height: 36px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    margin-bottom: 10px;
-    padding: 10px;
-    gap: 12px;
-    min-height: 44px;
+    margin-bottom: 6px;
+    padding: 6px;
+    gap: 8px;
+    min-height: 32px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin-bottom: 8px;
-    padding: 8px;
-    flex-direction: column;
-    align-items: flex-start;
+    margin-bottom: 4px;
+    padding: 6px;
+    flex-direction: row;
+    align-items: center;
     gap: 6px;
-    min-height: auto;
+    min-height: 28px;
   }
 `;
 
 const StatusLabel = styled.span`
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 1.4;
   word-wrap: break-word;
   overflow-wrap: break-word;
   flex: 1;
-  max-width: 65%;
-  padding-right: 8px;
+  max-width: 60%;
+  padding-right: 6px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: 0.85rem;
-    max-width: 60%;
+    font-size: 0.8rem;
+    max-width: 55%;
+    padding-right: 4px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 0.8rem;
-    max-width: 100%;
-    padding-right: 0;
-    margin-bottom: 4px;
+    font-size: 0.75rem;
+    max-width: 60%;
+    padding-right: 4px;
   }
 `;
 
 const StatusValue = styled.span<{ status: "safe" | "warning" | "danger" }>`
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  line-height: 1.4;
+  line-height: 1.3;
   text-align: right;
   white-space: nowrap;
   flex-shrink: 0;
   min-width: fit-content;
-  padding: 4px 8px;
-  border-radius: 4px;
+  padding: 2px 6px;
+  border-radius: 3px;
   background-color: rgba(255, 255, 255, 0.8);
   color: ${({ status }) => {
     switch (status) {
@@ -190,28 +191,27 @@ const StatusValue = styled.span<{ status: "safe" | "warning" | "danger" }>`
   }};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: 0.8rem;
-    padding: 3px 6px;
+    font-size: 0.75rem;
+    padding: 2px 4px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 0.75rem;
-    text-align: left;
-    align-self: flex-end;
-    padding: 2px 6px;
+    font-size: 0.7rem;
+    text-align: right;
+    padding: 1px 4px;
   }
 `;
 
 const RiskMeter = styled.div`
-  margin: 18px 0;
-  padding: 4px 0;
+  margin: 10px 0;
+  padding: 2px 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    margin: 16px 0;
+    margin: 8px 0;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin: 14px 0;
+    margin: 6px 0;
   }
 `;
 
@@ -315,83 +315,84 @@ const RiskMeterFill = styled.div<{ percentage: number; riskLevel: "low" | "mediu
 `;
 
 const DummyNote = styled.div`
-  margin-top: 20px;
-  padding: 14px;
+  margin-top: 12px;
+  padding: 8px;
   background: linear-gradient(135deg, #fff3cd 0%, #fef9e7 100%);
   border: 1px solid #ffeaa7;
-  border-left: 4px solid #f39c12;
+  border-left: 3px solid #f39c12;
   border-radius: ${({ theme }) => theme.borderRadius.small};
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #856404;
-  line-height: 1.5;
+  line-height: 1.4;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    margin-top: 18px;
-    padding: 12px;
+    margin-top: 10px;
+    padding: 6px;
+    font-size: 0.7rem;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 0.75rem;
-    padding: 10px;
-    margin-top: 16px;
+    font-size: 0.65rem;
+    padding: 6px;
+    margin-top: 8px;
   }
 `;
 
 const RefreshButton = styled.button`
   width: 100%;
-  margin-top: 16px;
-  padding: 14px 28px;
+  margin-top: 10px;
+  padding: 8px 16px;
   background: linear-gradient(135deg, #003d82 0%, #002752 100%);
   color: #ffffff;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  min-height: 48px;
+  min-height: 36px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0px 4px 12px rgba(0, 61, 130, 0.3);
+  box-shadow: 0px 2px 8px rgba(0, 61, 130, 0.3);
 
   &:hover {
     background: linear-gradient(135deg, #002752 0%, #001a3d 100%);
-    transform: scale(1.03);
-    box-shadow: 0px 6px 16px rgba(0, 61, 130, 0.4);
+    transform: scale(1.02);
+    box-shadow: 0px 4px 12px rgba(0, 61, 130, 0.4);
   }
 
   &:focus {
-    box-shadow: 0px 6px 16px rgba(0, 61, 130, 0.4), 0 0 0 3px rgba(0, 61, 130, 0.3);
+    box-shadow: 0px 4px 12px rgba(0, 61, 130, 0.4), 0 0 0 2px rgba(0, 61, 130, 0.3);
     outline: none;
   }
 
   &:active {
     background: linear-gradient(135deg, #001a3d 0%, #000f26 100%);
     transform: scale(1);
-    box-shadow: 0px 4px 12px rgba(0, 61, 130, 0.3);
+    box-shadow: 0px 2px 8px rgba(0, 61, 130, 0.3);
   }
 
   &:disabled {
     background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
     cursor: not-allowed;
     transform: none;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    margin-top: 14px;
-    padding: 12px 24px;
-    font-size: 0.9rem;
-    min-height: 44px;
+    margin-top: 8px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    min-height: 32px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin-top: 12px;
-    padding: 10px 20px;
-    font-size: 0.85rem;
-    min-height: 40px;
-    border-radius: 6px;
+    margin-top: 6px;
+    padding: 6px 10px;
+    font-size: 0.75rem;
+    min-height: 28px;
+    border-radius: 4px;
   }
 `;
 
