@@ -1,151 +1,149 @@
 {
   "navbar": {
     "home": "Accueil",
-    "caseStudies": "Études de Cas",
-    "reports": "Rapports",
-    "contact": "Contact"
+    "about": "À propos",
+    "contact": "Contact",
+    "language": "Langue"
   },
   "hero": {
-    "title": "SkadiX - Infrastructure Logistique de Chaîne du Froid",
-    "subtitle": "Un outil d'aide à la décision basé sur les données pour identifier les niveaux d'adéquation des villes côtières et ports européens pour l'infrastructure logistique de chaîne du froid. Soutenant la sécurité alimentaire, la pêche et les chaînes d'approvisionnement sensibles à la température.",
-    "tryTool": "Essayer l'Outil",
-    "viewCaseStudies": "Voir les Études de Cas"
+    "title": "Analyse de l'Impact de l'Élévation du Niveau de la Mer sur les Ports",
+    "subtitle": "Visualisez les prédictions d'élévation du niveau de la mer et évaluez l'impact sur l'infrastructure portuaire mondiale",
+    "description": "Notre outil interactif combine des données satellitaires, des modèles climatiques et l'apprentissage automatique pour fournir des analyses complètes de l'élévation du niveau de la mer pour les ports du monde entier.",
+    "cta": "Commencer l'Analyse",
+    "features": {
+      "dataIntegration": "Intégration de Données",
+      "prediction": "Prédiction",
+      "insights": "Analyses"
+    }
   },
   "footer": {
-    "callToAction": {
-      "title": "Prêt à analyser l'impact du niveau de la mer dans les ports ?",
-      "description": "Commencez à utiliser notre outil interactif dès aujourd'hui pour visualiser les prédictions d'élévation du niveau de la mer et prendre des décisions éclairées pour la planification des infrastructures portuaires.",
-      "button": "Essayer l'outil"
-    },
-    "company": "Entreprise",
-    "aboutUs": "À propos",
-    "careers": "Carrières",
-    "news": "Actualités",
-    "investors": "Investisseurs",
-    "quickLinks": "Liens rapides",
-    "home": "Accueil",
-    "dashboard": "Tableau de bord",
-    "caseStudies": "Études de cas",
-    "reports": "Rapports",
-    "resources": "Ressources",
-    "documentation": "Documentation",
-    "api": "API",
-    "faq": "FAQ",
-    "blog": "Blog",
-    "contactUs": "Nous contacter",
-    "email": "Email",
-    "phone": "Téléphone",
-    "address": "Adresse",
-    "copyright": "Tous droits réservés."
+    "description": "Analyse avancée de l'impact de l'élévation du niveau de la mer sur l'infrastructure portuaire mondiale.",
+    "quickLinks": "Liens Rapides",
+    "contact": "Contact",
+    "followUs": "Suivez-nous",
+    "copyright": "© 2024 SkadiX. Tous droits réservés."
   },
   "caseStudies": {
     "title": "Études de Cas",
-    "subtitle": "Explorez les applications réelles de notre outil d'évaluation de l'infrastructure logistique de la chaîne du froid dans les régions côtières européennes.",
+    "subtitle": "Découvrez comment les ports du monde entier s'adaptent à l'élévation du niveau de la mer",
+    "viewAll": "Voir Toutes les Études",
     "readMore": "Lire Plus",
-    "author": "Auteur",
-    "date": "Date",
-    "tags": "Étiquettes",
-    "noStudies": "Aucune étude de cas disponible pour le moment.",
-    "cta": {
-      "title": "Prêt à Analyser Votre Port ?",
-      "description": "Commencez à utiliser notre outil interactif dès aujourd'hui pour visualiser les prédictions d'élévation du niveau de la mer et prendre des décisions éclairées pour la planification de l'infrastructure portuaire.",
-      "button": "Essayer l'Outil"
-    },
-    "studies": [
-      {
-        "id": 1,
+    "studies": {
+      "rotterdam": {
         "title": "Adaptation du Port de Rotterdam",
-        "description": "Comment le plus grand port d'Europe se prépare à l'élévation du niveau de la mer avec des solutions d'infrastructure innovantes. Cette étude complète examine l'investissement de plusieurs milliards d'euros dans les défenses contre les inondations, les terminaux flottants et les systèmes logistiques adaptatifs.",
-        "date": "15 janvier 2023",
-        "author": "Dr. Emma Johnson",
-        "tags": ["Infrastructure", "Adaptation", "Pays-Bas"]
+        "location": "Pays-Bas",
+        "description": "Comment le plus grand port d'Europe se prépare à l'élévation du niveau de la mer avec des solutions d'infrastructure innovantes.",
+        "challenge": "Le port de Rotterdam fait face à des défis uniques en raison de sa situation géographique en dessous du niveau de la mer et de son rôle crucial en tant que porte d'entrée de l'Europe.",
+        "solution": "Mise en œuvre de barrières anti-tempête avancées, de systèmes de drainage améliorés et d'infrastructures portuaires flottantes adaptatives.",
+        "results": "Réduction de 60% du risque d'inondation et amélioration de la résilience opérationnelle face aux conditions météorologiques extrêmes.",
+        "keyMetrics": {
+          "riskReduction": "60% de réduction du risque",
+          "investment": "2,3 milliards d'euros d'investissement",
+          "timeline": "Projet sur 15 ans",
+          "protection": "Protection jusqu'à 4m d'élévation"
+        }
       },
-      {
-        "id": 2,
-        "title": "Évaluation de la Vulnérabilité du Port de Shanghai",
-        "description": "Analyse des risques d'inondation et de l'impact économique de l'élévation du niveau de la mer sur le port à conteneurs le plus fréquenté de Chine. Cette étude fournit des évaluations détaillées des risques et des recommandations pour les stratégies de résilience climatique.",
-        "date": "22 mars 2023",
-        "author": "Prof. Liu Wei",
-        "tags": ["Évaluation des Risques", "Économie", "Chine"]
+      "shanghai": {
+        "title": "Vulnérabilité du Port de Shanghai",
+        "location": "Chine",
+        "description": "Analyse des risques d'inondation et de l'impact économique de l'élévation du niveau de la mer sur le port à conteneurs le plus fréquenté de Chine.",
+        "challenge": "Shanghai traite plus de 47 millions de TEU par an et fait face à des risques croissants d'inondation dus à l'élévation du niveau de la mer et à l'affaissement des terres.",
+        "solution": "Construction de digues de protection, systèmes de pompage avancés et relocalisation stratégique des infrastructures critiques.",
+        "results": "Protection améliorée contre les ondes de tempête et maintien de 95% de la capacité opérationnelle pendant les événements météorologiques extrêmes.",
+        "keyMetrics": {
+          "cargoVolume": "47M TEU/an",
+          "protectionLevel": "Protection contre les tempêtes centenaires",
+          "economicImpact": "200 milliards USD d'activité protégée",
+          "adaptationCost": "15 milliards USD d'investissement"
+        }
       },
-      {
-        "id": 3,
+      "singapore": {
         "title": "Stratégie de Résilience de Singapour",
-        "description": "Comment Singapour met en œuvre des systèmes de défense maritime de pointe pour protéger ses infrastructures maritimes vitales. Un regard détaillé sur l'approche globale de la cité-État en matière de protection côtière.",
-        "date": "10 mai 2023",
-        "author": "Dr. Tan Mei Ling",
-        "tags": ["Systèmes de Défense", "Innovation", "Singapour"]
+        "location": "Singapour",
+        "description": "Comment Singapour met en œuvre des systèmes de défense maritime de pointe pour protéger son infrastructure maritime vitale.",
+        "challenge": "En tant que cité-État insulaire, Singapour est particulièrement vulnérable à l'élévation du niveau de la mer, avec 30% de l'île située à moins de 5m au-dessus du niveau de la mer.",
+        "solution": "Développement de polders, barrières marines intelligentes et infrastructure portuaire adaptative avec surveillance en temps réel.",
+        "results": "Système de protection intégré capable de s'adapter aux changements du niveau de la mer jusqu'en 2100.",
+        "keyMetrics": {
+          "protectedArea": "100% du littoral protégé",
+          "smartBarriers": "50km de barrières intelligentes",
+          "monitoringSystems": "Surveillance 24/7",
+          "futureReady": "Préparé jusqu'en 2100"
+        }
       },
-      {
-        "id": 4,
-        "title": "Adaptation Climatique du Port de Hambourg",
-        "description": "Le deuxième plus grand port d'Allemagne met en œuvre des mesures d'adaptation climatique complètes, notamment des barrières contre les ondes de tempête et des infrastructures surélevées pour se protéger contre l'élévation du niveau de la mer.",
-        "date": "18 juin 2023",
-        "author": "Dr. Klaus Mueller",
-        "tags": ["Adaptation Climatique", "Allemagne", "Onde de Tempête"]
+      "miami": {
+        "title": "Résilience du Port de Miami",
+        "location": "États-Unis",
+        "description": "Initiatives d'adaptation du port de Miami face à l'élévation accélérée du niveau de la mer et aux ouragans plus intenses.",
+        "challenge": "Miami fait face à l'une des élévations du niveau de la mer les plus rapides au monde, avec des projections de 0,6 à 2,1 mètres d'ici 2100.",
+        "solution": "Infrastructure surélevée, systèmes de drainage améliorés et planification d'urgence intégrée pour les événements climatiques extrêmes.",
+        "results": "Amélioration de 40% de la capacité de gestion des inondations et réduction des temps d'arrêt opérationnels.",
+        "keyMetrics": {
+          "seaLevelRise": "0,6-2,1m d'ici 2100",
+          "floodCapacity": "40% d'amélioration",
+          "infrastructure": "85% d'infrastructures surélevées",
+          "emergencyResponse": "Temps de réponse < 2h"
+        }
       },
-      {
-        "id": 5,
-        "title": "Durabilité du Port d'Anvers-Bruges",
-        "description": "Le plus grand complexe portuaire de Belgique présente des approches innovantes pour des opérations portuaires durables tout en maintenant la compétitivité face aux défis climatiques.",
-        "date": "25 juillet 2023",
-        "author": "Prof. Marie Dubois",
-        "tags": ["Durabilité", "Belgique", "Innovation"]
+      "hamburg": {
+        "title": "Innovation du Port de Hambourg",
+        "location": "Allemagne",
+        "description": "Solutions technologiques avancées et planification adaptative pour le troisième plus grand port d'Europe.",
+        "challenge": "Situé sur l'Elbe, le port de Hambourg doit gérer les marées, les ondes de tempête et l'élévation progressive du niveau de la mer.",
+        "solution": "Systèmes de prédiction IA, infrastructure modulaire et coordination avec les défenses côtières régionales.",
+        "results": "Réduction de 50% des interruptions liées aux conditions météorologiques et amélioration de l'efficacité opérationnelle.",
+        "keyMetrics": {
+          "aiPrediction": "Prédictions 72h à l'avance",
+          "modularInfra": "70% d'infrastructure modulaire",
+          "weatherResilience": "50% moins d'interruptions",
+          "efficiency": "25% d'amélioration d'efficacité"
+        }
       },
-      {
-        "id": 6,
-        "title": "Analyse des Travaux du Delta des Pays-Bas",
-        "description": "Analyse complète du système de protection contre les inondations des Travaux du Delta et de son efficacité contre la montée du niveau de la mer aux Pays-Bas.",
-        "date": "10 janvier 2024",
-        "author": "Dr. Emma van der Berg",
-        "tags": ["Protection contre les Inondations", "Pays-Bas", "Infrastructure"]
-      },
-      {
-        "id": 7,
-        "title": "Résilience Climatique du Port de Singapour",
-        "description": "Évaluation des stratégies d'adaptation de l'infrastructure portuaire de Singapour au changement climatique et à la montée du niveau de la mer.",
-        "date": "5 décembre 2023",
-        "author": "Prof. Li Wei Chen",
-        "tags": ["Singapour", "Infrastructure Portuaire", "Adaptation Climatique"]
-      },
-      {
-        "id": 8,
-        "title": "Planification Future du Port de Hambourg",
-        "description": "Planification stratégique pour la durabilité à long terme du port de Hambourg et l'adaptation aux changements du niveau de la mer et aux événements météorologiques extrêmes.",
-        "date": "18 novembre 2023",
-        "author": "Dr. Klaus Mueller",
-        "tags": ["Hambourg", "Planification Stratégique", "Durabilité"]
+      "tokyo": {
+        "title": "Préparation du Port de Tokyo",
+        "location": "Japon",
+        "description": "Approche intégrée combinant défenses traditionnelles et technologies modernes pour protéger la baie de Tokyo.",
+        "challenge": "La baie de Tokyo abrite 40 millions de personnes et une infrastructure économique critique, face aux risques de tsunamis et d'élévation du niveau de la mer.",
+        "solution": "Barrières anti-tsunami renforcées, systèmes d'alerte précoce et infrastructure portuaire résistante aux séismes.",
+        "results": "Protection complète contre les tsunamis de magnitude 8+ et maintien de la continuité opérationnelle.",
+        "keyMetrics": {
+          "population": "40M personnes protégées",
+          "tsunamiProtection": "Résistance magnitude 8+",
+          "earlyWarning": "Alerte 10min à l'avance",
+          "continuity": "99,5% de disponibilité"
+        }
       }
-    ]
+    }
   },
   "dashboard": {
     "title": "Tableau de Bord",
     "controlPanel": "Panneau de Contrôle",
     "portSelection": "Sélection du Port",
-    "selectPort": "Sélectionner Port",
+    "selectPort": "Sélectionner un Port",
     "port": "Port",
     "scenarioSelection": "Sélection du Scénario",
-    "selectScenario": "Sélectionner Scénario",
+    "selectScenario": "Sélectionner un Scénario",
     "scenario": "Scénario",
     "language": "Langue",
     "dataLayers": "Couches de Données",
-    "elevation": "Élévation",
-    "tide": "Marée",
-    "infrastructure": "Infrastructure",
-    "floodRisk": "Risque d'Inondation",
+    "portInfrastructure": "Infrastructure et Connectivité Portuaire",
+    "oceanClimate": "Exposition Océanique et Climatique",
+    "riskResilience": "Risque et Résilience",
+    "energyCost": "Coût Énergétique",
+    "socioeconomic": "Facteurs Socioéconomiques",
     "weight": "Poids",
     "transparency": "Transparence",
     "filters": "Filtres",
-    "coastalSubmergenceAnalysis": "🌊 Analyse de Submersion Côtière",
-    "layerControls": "Contrôles de Couches",
+    "portSuitabilityAnalysis": "🌊 Analyse d'Aptitude Portuaire",
+    "layerControls": "Contrôles des Couches",
     "seaLevelRise": "Élévation du Niveau de la Mer",
     "economicImpact": "Impact Économique",
     "simulationControls": "Contrôles de Simulation",
     "timeHorizon": "Horizon Temporel",
     "emissionScenario": "Scénario d'Émissions",
     "adaptationMeasures": "Mesures d'Adaptation",
-    "runSimulation": "Exécuter Simulation",
-    "exportResults": "Exporter Résultats",
+    "runSimulation": "Lancer la Simulation",
+    "exportResults": "Exporter les Résultats",
     "legend": {
       "title": "Zones de Risque",
       "lowRisk": "Risque Faible (0-30)",
@@ -156,23 +154,23 @@
       "critical": "Critique (80+)",
       "currentRisk": "Risque Actuel"
     },
-    "generateReport": "Générer Rapport",
-    "coastalSubmergence": {
-      "title": "Analyse de Submersion Côtière",
+    "generateReport": "Générer un Rapport",
+    "portSuitability": {
+      "title": "Analyse d'Aptitude Portuaire",
       "portAreaWaterLevel": "Niveau d'Eau de la Zone Portuaire",
       "coastalErosionRate": "Taux d'Érosion Côtière",
       "floodRisk": "Risque d'Inondation",
-      "infrastructureVulnerability": "Vulnérabilité des Infrastructures",
+      "infrastructureVulnerability": "Vulnérabilité de l'Infrastructure",
       "adaptationLevel": "Niveau d'Adaptation",
-      "dummyDataNote": "Données Simulées: Il s'agit de données simulées à des fins de démonstration. L'analyse réelle intégrera des modèles ML avec les ressources Blue-Cloud et EDITO Digital Twin Ocean.",
+      "dummyDataNote": "Données Fictives : Il s'agit de données simulées à des fins de démonstration. L'analyse réelle intégrera des modèles ML avec les ressources Blue-Cloud et EDITO Digital Twin Ocean.",
       "refreshAnalysis": "Actualiser l'Analyse"
     }
   },
   "landing": {
     "callToAction": {
-      "title": "Prêt à Analyser l'Impact du Niveau de la Mer sur les Ports?",
-      "description": "Commencez à utiliser notre outil interactif dès aujourd'hui pour visualiser les prédictions d'élévation du niveau de la mer et prendre des décisions éclairées pour la planification d'infrastructure portuaire.",
-      "button": "Essayez l'Outil Maintenant"
+      "title": "Prêt à Analyser l'Impact de l'Élévation du Niveau de la Mer sur les Ports ?",
+      "description": "Commencez à utiliser notre outil interactif dès aujourd'hui pour visualiser les prédictions d'élévation du niveau de la mer et prendre des décisions éclairées pour la planification de l'infrastructure portuaire.",
+      "button": "Essayer l'Outil Maintenant"
     },
     "howItWorks": {
       "title": "Comment Ça Marche",
@@ -187,11 +185,11 @@
         },
         "adjustParameters": {
           "title": "Ajuster les Paramètres",
-          "description": "Affinez votre analyse en ajustant le poids de différents facteurs tels que l'élévation, les modèles de marées, la résilience de l'infrastructure et le risque historique d'inondation."
+          "description": "Affinez votre analyse en ajustant le poids de différents facteurs tels que l'élévation, les modèles de marée, la résilience de l'infrastructure et le risque historique d'inondation."
         },
         "visualizeResults": {
           "title": "Visualiser les Résultats",
-          "description": "Visualisez les résultats sur une carte interactive montrant les zones d'inondation prédites, les niveaux de risque et le statut d'utilisabilité du port. Générez des rapports détaillés pour la planification et la prise de décision."
+          "description": "Visualisez les résultats sur une carte interactive montrant les zones d'inondation prédites, les niveaux de risque et l'état d'utilisabilité du port. Générez des rapports détaillés pour la planification et la prise de décision."
         }
       }
     },
@@ -206,8 +204,8 @@
         "description": "Techniques de modélisation avancées pour prédire l'élévation du niveau de la mer sous différents scénarios climatiques, aidant les ports à se préparer aux défis futurs."
       },
       "insights": {
-        "title": "Perspectives",
-        "description": "Outils d'analyse visuelle qui transforment des données complexes en perspectives exploitables, permettant une prise de décision éclairée pour les autorités portuaires."
+        "title": "Analyses",
+        "description": "Outils d'analyse visuelle qui transforment des données complexes en informations exploitables, permettant une prise de décision éclairée pour les autorités portuaires."
       }
     },
     "caseStudies": {
@@ -220,7 +218,7 @@
         },
         "shanghai": {
           "title": "Vulnérabilité du Port de Shanghai",
-          "description": "Analyse des risques d'inondation et de l'impact économique de l'élévation du niveau de la mer sur le port à conteneurs le plus occupé de Chine."
+          "description": "Analyse des risques d'inondation et de l'impact économique de l'élévation du niveau de la mer sur le port à conteneurs le plus fréquenté de Chine."
         },
         "singapore": {
           "title": "Stratégie de Résilience de Singapour",

@@ -398,12 +398,13 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = false, toggleSidebar }) => {
     t
   } = useAppContext();
 
-  // Data layers state
+  // Data layers state - Updated with new slider configuration
   const [dataLayers, setDataLayers] = React.useState({
-    elevation: { enabled: true, weight: 0, transparency: 0 },
-    tide: { enabled: false, weight: 0, transparency: 0 },
-    infrastructure: { enabled: false, weight: 0, transparency: 0 },
-    floodRisk: { enabled: false, weight: 0, transparency: 0 }
+    portInfrastructure: { enabled: true, weight: 50, transparency: 0 },
+    oceanClimate: { enabled: false, weight: 30, transparency: 0 },
+    riskResilience: { enabled: false, weight: 40, transparency: 0 },
+    energyCost: { enabled: false, weight: 20, transparency: 0 },
+    socioeconomic: { enabled: false, weight: 25, transparency: 0 }
   });
 
   const handlePortChange = (value: string) => {
@@ -466,51 +467,51 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = false, toggleSidebar }) => {
       <SidebarSection>
         <SectionTitle>{t('dashboard.dataLayers')}</SectionTitle>
         
-        {/* Elevation Layer */}
+        {/* Port Infrastructure & Connectivity */}
         <ToggleContainer>
           <Toggle>
             <ToggleInput
               type="checkbox"
-              id="elevation-layer"
-              checked={dataLayers.elevation.enabled}
+              id="port-infrastructure-layer"
+              checked={dataLayers.portInfrastructure.enabled}
               onChange={(e) => setDataLayers(prev => ({
                 ...prev,
-                elevation: { ...prev.elevation, enabled: e.target.checked }
+                portInfrastructure: { ...prev.portInfrastructure, enabled: e.target.checked }
               }))}
             />
-            <ToggleLabel htmlFor="elevation-layer">{t('dashboard.elevation')}</ToggleLabel>
+            <ToggleLabel htmlFor="port-infrastructure-layer">{t('dashboard.portInfrastructure')}</ToggleLabel>
           </Toggle>
-          {dataLayers.elevation.enabled && (
+          {dataLayers.portInfrastructure.enabled && (
             <>
               <SliderContainer>
                 <SliderLabel>
                   <SliderName>{t('dashboard.weight')}</SliderName>
-                  <SliderValue>{dataLayers.elevation.weight}%</SliderValue>
+                  <SliderValue>{dataLayers.portInfrastructure.weight}%</SliderValue>
                 </SliderLabel>
                 <Slider
                   type="range"
                   min="0"
                   max="100"
-                  value={dataLayers.elevation.weight}
+                  value={dataLayers.portInfrastructure.weight}
                   onChange={(e) => setDataLayers(prev => ({
                     ...prev,
-                    elevation: { ...prev.elevation, weight: parseInt(e.target.value) }
+                    portInfrastructure: { ...prev.portInfrastructure, weight: parseInt(e.target.value) }
                   }))}
                 />
               </SliderContainer>
               <SliderContainer>
                 <SliderLabel>
                   <SliderName>{t('dashboard.transparency')}</SliderName>
-                  <SliderValue>{dataLayers.elevation.transparency}%</SliderValue>
+                  <SliderValue>{dataLayers.portInfrastructure.transparency}%</SliderValue>
                 </SliderLabel>
                 <Slider
                   type="range"
                   min="0"
                   max="100"
-                  value={dataLayers.elevation.transparency}
+                  value={dataLayers.portInfrastructure.transparency}
                   onChange={(e) => setDataLayers(prev => ({
                     ...prev,
-                    elevation: { ...prev.elevation, transparency: parseInt(e.target.value) }
+                    portInfrastructure: { ...prev.portInfrastructure, transparency: parseInt(e.target.value) }
                   }))}
                 />
               </SliderContainer>
@@ -518,51 +519,51 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = false, toggleSidebar }) => {
           )}
         </ToggleContainer>
 
-        {/* Tide Layer */}
+        {/* Ocean & Climate Exposure */}
         <ToggleContainer>
           <Toggle>
             <ToggleInput
               type="checkbox"
-              id="tide-layer"
-              checked={dataLayers.tide.enabled}
+              id="ocean-climate-layer"
+              checked={dataLayers.oceanClimate.enabled}
               onChange={(e) => setDataLayers(prev => ({
                 ...prev,
-                tide: { ...prev.tide, enabled: e.target.checked }
+                oceanClimate: { ...prev.oceanClimate, enabled: e.target.checked }
               }))}
             />
-            <ToggleLabel htmlFor="tide-layer">{t('dashboard.tide')}</ToggleLabel>
+            <ToggleLabel htmlFor="ocean-climate-layer">{t('dashboard.oceanClimate')}</ToggleLabel>
           </Toggle>
-          {dataLayers.tide.enabled && (
+          {dataLayers.oceanClimate.enabled && (
             <>
               <SliderContainer>
                 <SliderLabel>
                   <SliderName>{t('dashboard.weight')}</SliderName>
-                  <SliderValue>{dataLayers.tide.weight}%</SliderValue>
+                  <SliderValue>{dataLayers.oceanClimate.weight}%</SliderValue>
                 </SliderLabel>
                 <Slider
                   type="range"
                   min="0"
                   max="100"
-                  value={dataLayers.tide.weight}
+                  value={dataLayers.oceanClimate.weight}
                   onChange={(e) => setDataLayers(prev => ({
                     ...prev,
-                    tide: { ...prev.tide, weight: parseInt(e.target.value) }
+                    oceanClimate: { ...prev.oceanClimate, weight: parseInt(e.target.value) }
                   }))}
                 />
               </SliderContainer>
               <SliderContainer>
                 <SliderLabel>
                   <SliderName>{t('dashboard.transparency')}</SliderName>
-                  <SliderValue>{dataLayers.tide.transparency}%</SliderValue>
+                  <SliderValue>{dataLayers.oceanClimate.transparency}%</SliderValue>
                 </SliderLabel>
                 <Slider
                   type="range"
                   min="0"
                   max="100"
-                  value={dataLayers.tide.transparency}
+                  value={dataLayers.oceanClimate.transparency}
                   onChange={(e) => setDataLayers(prev => ({
                     ...prev,
-                    tide: { ...prev.tide, transparency: parseInt(e.target.value) }
+                    oceanClimate: { ...prev.oceanClimate, transparency: parseInt(e.target.value) }
                   }))}
                 />
               </SliderContainer>
@@ -570,51 +571,51 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = false, toggleSidebar }) => {
           )}
         </ToggleContainer>
 
-        {/* Infrastructure Layer */}
+        {/* Risk & Resilience */}
         <ToggleContainer>
           <Toggle>
             <ToggleInput
               type="checkbox"
-              id="infrastructure-layer"
-              checked={dataLayers.infrastructure.enabled}
+              id="risk-resilience-layer"
+              checked={dataLayers.riskResilience.enabled}
               onChange={(e) => setDataLayers(prev => ({
                 ...prev,
-                infrastructure: { ...prev.infrastructure, enabled: e.target.checked }
+                riskResilience: { ...prev.riskResilience, enabled: e.target.checked }
               }))}
             />
-            <ToggleLabel htmlFor="infrastructure-layer">{t('dashboard.infrastructure')}</ToggleLabel>
+            <ToggleLabel htmlFor="risk-resilience-layer">{t('dashboard.riskResilience')}</ToggleLabel>
           </Toggle>
-          {dataLayers.infrastructure.enabled && (
+          {dataLayers.riskResilience.enabled && (
             <>
               <SliderContainer>
                 <SliderLabel>
                   <SliderName>{t('dashboard.weight')}</SliderName>
-                  <SliderValue>{dataLayers.infrastructure.weight}%</SliderValue>
+                  <SliderValue>{dataLayers.riskResilience.weight}%</SliderValue>
                 </SliderLabel>
                 <Slider
                   type="range"
                   min="0"
                   max="100"
-                  value={dataLayers.infrastructure.weight}
+                  value={dataLayers.riskResilience.weight}
                   onChange={(e) => setDataLayers(prev => ({
                     ...prev,
-                    infrastructure: { ...prev.infrastructure, weight: parseInt(e.target.value) }
+                    riskResilience: { ...prev.riskResilience, weight: parseInt(e.target.value) }
                   }))}
                 />
               </SliderContainer>
               <SliderContainer>
                 <SliderLabel>
                   <SliderName>{t('dashboard.transparency')}</SliderName>
-                  <SliderValue>{dataLayers.infrastructure.transparency}%</SliderValue>
+                  <SliderValue>{dataLayers.riskResilience.transparency}%</SliderValue>
                 </SliderLabel>
                 <Slider
                   type="range"
                   min="0"
                   max="100"
-                  value={dataLayers.infrastructure.transparency}
+                  value={dataLayers.riskResilience.transparency}
                   onChange={(e) => setDataLayers(prev => ({
                     ...prev,
-                    infrastructure: { ...prev.infrastructure, transparency: parseInt(e.target.value) }
+                    riskResilience: { ...prev.riskResilience, transparency: parseInt(e.target.value) }
                   }))}
                 />
               </SliderContainer>
@@ -622,51 +623,103 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = false, toggleSidebar }) => {
           )}
         </ToggleContainer>
 
-        {/* Flood Risk Layer */}
+        {/* Energy Cost */}
         <ToggleContainer>
           <Toggle>
             <ToggleInput
               type="checkbox"
-              id="flood-risk-layer"
-              checked={dataLayers.floodRisk.enabled}
+              id="energy-cost-layer"
+              checked={dataLayers.energyCost.enabled}
               onChange={(e) => setDataLayers(prev => ({
                 ...prev,
-                floodRisk: { ...prev.floodRisk, enabled: e.target.checked }
+                energyCost: { ...prev.energyCost, enabled: e.target.checked }
               }))}
             />
-            <ToggleLabel htmlFor="flood-risk-layer">{t('dashboard.floodRisk')}</ToggleLabel>
+            <ToggleLabel htmlFor="energy-cost-layer">{t('dashboard.energyCost')}</ToggleLabel>
           </Toggle>
-          {dataLayers.floodRisk.enabled && (
+          {dataLayers.energyCost.enabled && (
             <>
               <SliderContainer>
                 <SliderLabel>
                   <SliderName>{t('dashboard.weight')}</SliderName>
-                  <SliderValue>{dataLayers.floodRisk.weight}%</SliderValue>
+                  <SliderValue>{dataLayers.energyCost.weight}%</SliderValue>
                 </SliderLabel>
                 <Slider
                   type="range"
                   min="0"
                   max="100"
-                  value={dataLayers.floodRisk.weight}
+                  value={dataLayers.energyCost.weight}
                   onChange={(e) => setDataLayers(prev => ({
                     ...prev,
-                    floodRisk: { ...prev.floodRisk, weight: parseInt(e.target.value) }
+                    energyCost: { ...prev.energyCost, weight: parseInt(e.target.value) }
                   }))}
                 />
               </SliderContainer>
               <SliderContainer>
                 <SliderLabel>
                   <SliderName>{t('dashboard.transparency')}</SliderName>
-                  <SliderValue>{dataLayers.floodRisk.transparency}%</SliderValue>
+                  <SliderValue>{dataLayers.energyCost.transparency}%</SliderValue>
                 </SliderLabel>
                 <Slider
                   type="range"
                   min="0"
                   max="100"
-                  value={dataLayers.floodRisk.transparency}
+                  value={dataLayers.energyCost.transparency}
                   onChange={(e) => setDataLayers(prev => ({
                     ...prev,
-                    floodRisk: { ...prev.floodRisk, transparency: parseInt(e.target.value) }
+                    energyCost: { ...prev.energyCost, transparency: parseInt(e.target.value) }
+                  }))}
+                />
+              </SliderContainer>
+            </>
+          )}
+        </ToggleContainer>
+
+        {/* Socioeconomic Factors */}
+        <ToggleContainer>
+          <Toggle>
+            <ToggleInput
+              type="checkbox"
+              id="socioeconomic-layer"
+              checked={dataLayers.socioeconomic.enabled}
+              onChange={(e) => setDataLayers(prev => ({
+                ...prev,
+                socioeconomic: { ...prev.socioeconomic, enabled: e.target.checked }
+              }))}
+            />
+            <ToggleLabel htmlFor="socioeconomic-layer">{t('dashboard.socioeconomic')}</ToggleLabel>
+          </Toggle>
+          {dataLayers.socioeconomic.enabled && (
+            <>
+              <SliderContainer>
+                <SliderLabel>
+                  <SliderName>{t('dashboard.weight')}</SliderName>
+                  <SliderValue>{dataLayers.socioeconomic.weight}%</SliderValue>
+                </SliderLabel>
+                <Slider
+                  type="range"
+                  min="0"
+                  max="100"
+                  value={dataLayers.socioeconomic.weight}
+                  onChange={(e) => setDataLayers(prev => ({
+                    ...prev,
+                    socioeconomic: { ...prev.socioeconomic, weight: parseInt(e.target.value) }
+                  }))}
+                />
+              </SliderContainer>
+              <SliderContainer>
+                <SliderLabel>
+                  <SliderName>{t('dashboard.transparency')}</SliderName>
+                  <SliderValue>{dataLayers.socioeconomic.transparency}%</SliderValue>
+                </SliderLabel>
+                <Slider
+                  type="range"
+                  min="0"
+                  max="100"
+                  value={dataLayers.socioeconomic.transparency}
+                  onChange={(e) => setDataLayers(prev => ({
+                    ...prev,
+                    socioeconomic: { ...prev.socioeconomic, transparency: parseInt(e.target.value) }
                   }))}
                 />
               </SliderContainer>
@@ -685,7 +738,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = false, toggleSidebar }) => {
               checked={showCoastalSubmergence}
               onChange={(e) => setShowCoastalSubmergence(e.target.checked)}
             />
-            <ToggleLabel htmlFor="show-coastal-submergence">{t('dashboard.coastalSubmergenceAnalysis')}</ToggleLabel>
+            <ToggleLabel htmlFor="show-coastal-submergence">{t('dashboard.portSuitabilityAnalysis')}</ToggleLabel>
           </Toggle>
         </ToggleContainer>
       </SidebarSection>

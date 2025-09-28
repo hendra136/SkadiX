@@ -125,12 +125,12 @@ ${t("dashboard.port")}: ${portName}
 ${t("dashboard.scenario")}: ${scenarioName}
 ${t("dashboard.language")}: ${language.toUpperCase()}
 
-${t("dashboard.coastalSubmergence.title")}:
-- ${t("dashboard.coastalSubmergence.portAreaWaterLevel")}: ${riskData?.seaLevelRise || "N/A"}m
-- ${t("dashboard.coastalSubmergence.floodRisk")}: ${riskData?.riskIndex || "N/A"}%
-- ${t("dashboard.coastalSubmergence.infrastructureVulnerability")}: ${riskData?.status || "N/A"}
+${t("dashboard.portSuitability.title")}:
+- ${t("dashboard.portSuitability.portAreaWaterLevel")}: ${riskData?.seaLevelRise || "N/A"}m
+- ${t("dashboard.portSuitability.floodRisk")}: ${riskData?.riskIndex || "N/A"}%
+- ${t("dashboard.portSuitability.infrastructureVulnerability")}: ${riskData?.status || "N/A"}
 
-${t("dashboard.coastalSubmergence.dummyDataNote")}
+${t("dashboard.portSuitability.dummyDataNote")}
     `.trim();
 
     alert(reportContent);

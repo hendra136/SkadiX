@@ -252,20 +252,24 @@ const RightSection = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 0.75rem;
+  gap: 2rem; /* SYNCHRONIZED: Matches NavLinks gap for consistent spacing */
   position: relative;
   z-index: 2;
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.xl || "1200px"}) {
+    gap: 1.5rem; /* SYNCHRONIZED: Matches NavLinks responsive gap */
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.lg || "992px"}) {
-    gap: 0.5rem;
+    gap: 1.2rem; /* SYNCHRONIZED: Matches NavLinks responsive gap */
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    gap: 0.5rem;
+    gap: 1.2rem; /* SYNCHRONIZED: Matches NavLinks responsive gap */
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    gap: 0.375rem;
+    gap: 1.2rem; /* SYNCHRONIZED: Matches NavLinks responsive gap */
   }
 `;
 

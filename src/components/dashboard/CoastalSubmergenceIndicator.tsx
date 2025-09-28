@@ -481,7 +481,7 @@ const CoastalSubmergenceIndicator: React.FC<CoastalSubmergenceIndicatorProps> = 
   return (
     <IndicatorContainer>
       <IndicatorTitle>
-        🌊 {t("dashboard.coastalSubmergence.title")}
+        🌊 {t("dashboard.portSuitability.title")}
         <ToggleButton
           onClick={() => {
             const newExpanded = !isExpanded;
@@ -495,20 +495,20 @@ const CoastalSubmergenceIndicator: React.FC<CoastalSubmergenceIndicatorProps> = 
 
       <IndicatorContent isExpanded={isExpanded}>
         <StatusItem>
-          <StatusLabel>{t("dashboard.coastalSubmergence.portAreaWaterLevel")}</StatusLabel>
+          <StatusLabel>{t("dashboard.portSuitability.portAreaWaterLevel")}</StatusLabel>
           <StatusValue status={data.portArea.status}>
             {data.portArea.currentLevel}m → {data.portArea.projectedLevel}m
           </StatusValue>
         </StatusItem>
 
         <StatusItem>
-          <StatusLabel>{t("dashboard.coastalSubmergence.coastalErosionRate")}</StatusLabel>
+          <StatusLabel>{t("dashboard.portSuitability.coastalErosionRate")}</StatusLabel>
           <StatusValue status={data.coastalZone.status}>{data.coastalZone.erosionRate}m/year</StatusValue>
         </StatusItem>
 
         <RiskMeter>
           <RiskMeterLabel>
-            <span>{t("dashboard.coastalSubmergence.floodRisk")}</span>
+            <span>{t("dashboard.portSuitability.floodRisk")}</span>
             <span>{data.coastalZone.floodRisk}%</span>
           </RiskMeterLabel>
           <RiskMeterBar>
@@ -518,7 +518,7 @@ const CoastalSubmergenceIndicator: React.FC<CoastalSubmergenceIndicatorProps> = 
 
         <RiskMeter>
           <RiskMeterLabel>
-            <span>{t("dashboard.coastalSubmergence.infrastructureVulnerability")}</span>
+            <span>{t("dashboard.portSuitability.infrastructureVulnerability")}</span>
             <span>{data.infrastructure.vulnerabilityIndex}%</span>
           </RiskMeterLabel>
           <RiskMeterBar>
@@ -528,7 +528,7 @@ const CoastalSubmergenceIndicator: React.FC<CoastalSubmergenceIndicatorProps> = 
 
         <RiskMeter>
           <RiskMeterLabel>
-            <span>{t("dashboard.coastalSubmergence.adaptationLevel")}</span>
+            <span>{t("dashboard.portSuitability.adaptationLevel")}</span>
             <span>{data.infrastructure.adaptationLevel}%</span>
           </RiskMeterLabel>
           <RiskMeterBar>
@@ -537,10 +537,10 @@ const CoastalSubmergenceIndicator: React.FC<CoastalSubmergenceIndicatorProps> = 
         </RiskMeter>
 
         <DummyNote>
-          ⚠️ {t("dashboard.coastalSubmergence.dummyNote")}
+          ⚠️ {t("dashboard.portSuitability.dummyDataNote")}
         </DummyNote>
 
-        <RefreshButton onClick={handleRefresh}>🔄 {t("dashboard.coastalSubmergence.refreshAnalysis")}</RefreshButton>
+        <RefreshButton onClick={handleRefresh}>🔄 {t("dashboard.portSuitability.refreshAnalysis")}</RefreshButton>
       </IndicatorContent>
     </IndicatorContainer>
   );
