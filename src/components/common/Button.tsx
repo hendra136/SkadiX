@@ -61,6 +61,20 @@ const ButtonContainer = styled.button.withConfig({
       font-size: 0.85rem;
       min-height: 40px;
       border-radius: 6px;
+
+      @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        min-height: 36px;
+        border-radius: 5px;
+      }
+
+      @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+        min-height: 32px;
+        border-radius: 4px;
+      }
     `}
   
   ${({ size }) =>
@@ -70,6 +84,20 @@ const ButtonContainer = styled.button.withConfig({
       font-size: 0.95rem;
       min-height: 48px;
       border-radius: 8px;
+
+      @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+        min-height: 44px;
+        border-radius: 7px;
+      }
+
+      @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        min-height: 40px;
+        border-radius: 6px;
+      }
     `}
   /* button view all case CTA */
   ${({ size }) =>
@@ -79,6 +107,20 @@ const ButtonContainer = styled.button.withConfig({
       font-size: 1.1rem;
       min-height: 56px;
       border-radius: 10px;
+
+      @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+        padding: 14px 28px;
+        font-size: 1rem;
+        min-height: 52px;
+        border-radius: 9px;
+      }
+
+      @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+        min-height: 48px;
+        border-radius: 8px;
+      }
     `}
   
   /* Variant styles */

@@ -78,18 +78,19 @@ const SidebarContainer = styled.div<{ isOpen: boolean }>`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    width: 300px;
-    padding: 1.25rem;
+    width: 280px;
+    padding: 1rem;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     position: fixed;
     top: 0;
     left: 0;
-    width: 280px;
+    width: 260px;
     z-index: 1001; /* Higher than navbar for mobile overlay */
     transform: translateX(${({ isOpen }) => (isOpen ? '0' : '-100%')});
     transition: transform 0.3s ease;
+    padding: 0.875rem;
     box-shadow: ${({ isOpen }) => isOpen ? `
       0 16px 64px rgba(0, 61, 130, 0.2),
       0 8px 32px rgba(0, 61, 130, 0.15),
@@ -98,8 +99,8 @@ const SidebarContainer = styled.div<{ isOpen: boolean }>`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 260px;
-    padding: 1rem;
+    width: 240px;
+    padding: 0.75rem;
   }
 `;
 
@@ -146,6 +147,14 @@ const SidebarTitle = styled.h2`
   /* Enhanced typography */
   font-family: ${({ theme }) => theme.fonts?.heading || 'Arial, sans-serif'};
   letter-spacing: -0.02em;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 1.1rem;
+  }
 `;
 
 const CloseButton = styled.button`
@@ -179,6 +188,14 @@ const GenerateReportSection = styled.div`
 
 const SidebarSection = styled.div`
   margin-bottom: 1.5rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    margin-bottom: 1.25rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin-bottom: 1rem;
+  }
 `;
 
 const SectionTitle = styled.h3`
@@ -207,6 +224,26 @@ const SectionTitle = styled.h3`
       ${({ theme }) => theme.colors?.secondary || '#005f73'} 100%
     );
     border-radius: 2px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    
+    &::before {
+      width: 2px;
+      height: 1rem;
+    }
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 0.95rem;
+    margin-bottom: 0.875rem;
+    
+    &::before {
+      width: 2px;
+      height: 0.875rem;
+    }
   }
 `;
 
@@ -273,8 +310,11 @@ const ToggleLabel = styled.label`
 
 const ToggleInput = styled.input`
   margin-right: 0.5rem;
-  width: 16px;
-  height: 16px;
+  /* Proper proportional size - 1rem/16px */
+  width: 1rem;
+  height: 1rem;
+  /* Prevent shrinking in flex container */
+  flex-shrink: 0;
   accent-color: ${({ theme }) => theme.colors?.primary || '#0077b6'};
   cursor: pointer;
   border-radius: 3px;
@@ -290,17 +330,17 @@ const ToggleInput = styled.input`
     outline-offset: 2px;
   }
   
-  /* Mobile: Larger touch-friendly checkboxes */
+  /* Mobile: Smaller 12px size as requested */
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    width: 20px;
-    height: 20px;
-    margin-right: 0.75rem;
+    width: 12px;
+    height: 12px;
+    margin-right: 0.5rem;
   }
   
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    width: 18px;
-    height: 18px;
-    margin-right: 0.75rem;
+    width: 12px;
+    height: 12px;
+    margin-right: 0.5rem;
   }
 `;
 

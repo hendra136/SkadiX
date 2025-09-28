@@ -8,7 +8,7 @@ import ModernSelect from "./ModernSelect";
 const NavbarContainer = styled.nav`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 0 3rem;
   min-height: 70px;
 
@@ -50,17 +50,21 @@ const NavbarContainer = styled.nav`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg || "992px"}) {
-    padding: 1rem 2rem;
+    padding: 0.75rem 1.5rem;
+    min-height: 65px;
+    height: 65px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: 0.75rem 1.5rem;
-    height: 70px;
+    padding: 0.75rem 1rem;
+    height: 65px;
+    min-height: 65px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: 0.5rem 1rem;
-    height: 60px;
+    padding: 0.75rem 0.75rem;
+    height: 65px;
+    min-height: 65px;
   }
 `;
 
@@ -106,30 +110,34 @@ const Logo = styled(Link)`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
 
     img {
-      height: 38px;
-      margin-right: 0.5rem;
+      height: 32px;
+      margin-right: 0.4rem;
     }
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
+    padding: 0.375rem 0;
 
     img {
-      height: 34px;
-      margin-right: 0.4rem;
+      height: 28px;
+      margin-right: 0.3rem;
     }
   }
 `;
 
 const CenterContainer = styled.div`
+  /* Push navigation links to the right */
   display: flex;
   align-items: center;
   z-index: 2;
-  /* Hapus position, left, dan transform */
+  margin-left: auto;
 
+  /* Hide on mobile breakpoint */
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     display: none;
   }
@@ -217,18 +225,26 @@ const NavLink = styled(Link)`
 const RightContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 1rem;
+  gap: 0.5rem;
   position: relative;
   z-index: 2;
   padding: 1rem 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.xl || "1200px"}) {
-    gap: 0.75rem;
+    gap: 0.5rem;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg || "992px"}) {
-    gap: 0.5rem;
+    gap: 0.375rem;
+    padding: 0.75rem 0;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 0.75rem 0;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 0.75rem 0;
   }
 `;
 
@@ -236,25 +252,33 @@ const RightSection = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 0.5rem;
+  gap: 0.75rem;
   position: relative;
   z-index: 2;
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg || "992px"}) {
+    gap: 0.5rem;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    gap: 0.75rem;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    gap: 0.375rem;
   }
 `;
 
 const NavbarSelect = styled(ModernSelect)`
-  margin-left: 0;
+  margin: 0.5rem 0.75rem 0.5rem 0.25rem;
 
   /* Compact design with fixed dimensions and specific styling */
   & select {
     width: 120px !important;
     min-width: 120px !important;
     max-width: 120px !important;
-    height: 36px !important;
-    padding: 6px 24px 6px 8px !important;
+    height: 40px !important;
+    padding: 8px 24px 8px 8px !important;
     font-size: 14px !important;
     border-radius: 6px !important;
     background: #ffffff !important;
@@ -295,30 +319,39 @@ const NavbarSelect = styled(ModernSelect)`
     }
   }
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg || "992px"}) {
+    margin: 0.375rem 0.5rem 0.375rem 0.375rem;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    margin: 0.375rem 0.5rem 0.375rem 0.375rem;
+    
     & select {
       width: 100px !important;
       min-width: 100px !important;
       max-width: 100px !important;
-      height: 32px !important;
+      height: 36px !important;
       font-size: 12px !important;
-      padding: 4px 20px 4px 6px !important;
+      padding: 6px 20px 6px 6px !important;
     }
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin: 0.25rem 0.375rem 0.25rem 0.25rem;
+    
     & select {
       width: 90px !important;
       min-width: 90px !important;
       max-width: 90px !important;
-      height: 30px !important;
+      height: 36px !important;
       font-size: 11px !important;
-      padding: 3px 18px 3px 5px !important;
+      padding: 6px 18px 6px 5px !important;
     }
   }
 `;
 
 const MobileMenuButton = styled.button`
+  /* Hide by default on desktop */
   display: none;
   background: linear-gradient(135deg, #003d82 0%, #002752 100%);
   border: none;
@@ -336,7 +369,6 @@ const MobileMenuButton = styled.button`
   box-shadow: 0px 2px 8px rgba(0, 61, 130, 0.3);
   
   /* Perfect centering for the icon */
-  display: flex;
   align-items: center;
   justify-content: center;
   line-height: 1;
@@ -358,6 +390,7 @@ const MobileMenuButton = styled.button`
     box-shadow: 0px 2px 8px rgba(0, 61, 130, 0.3);
   }
 
+  /* Show only on mobile breakpoint */
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     display: flex;
   }
@@ -401,13 +434,13 @@ const MobileMenu = styled.div<{ isOpen: boolean }>`
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    top: 70px;
-    max-height: calc(100vh - 70px);
+    top: 65px;
+    max-height: calc(100vh - 65px);
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    top: 60px;
-    max-height: calc(100vh - 60px);
+    top: 65px;
+    max-height: calc(100vh - 65px);
     padding: 1rem;
   }
 
@@ -521,7 +554,6 @@ const Navbar: React.FC = () => {
           <NavLinks>
             <NavLink to="/">{t("navbar.home")}</NavLink>
             <NavLink to="/case-studies">{t("navbar.caseStudies")}</NavLink>
-            <NavLink to="/reports">{t("navbar.reports")}</NavLink>
             <NavLink to="#" onClick={handleContactClick}>
               {t("navbar.contact")}
             </NavLink>
@@ -550,9 +582,6 @@ const Navbar: React.FC = () => {
         </MobileNavLink>
         <MobileNavLink to="/case-studies" onClick={() => setIsMenuOpen(false)}>
           {t("navbar.caseStudies")}
-        </MobileNavLink>
-        <MobileNavLink to="/reports" onClick={() => setIsMenuOpen(false)}>
-          {t("navbar.reports")}
         </MobileNavLink>
         <MobileNavLink to="#" onClick={handleContactClick}>
           {t("navbar.contact")}

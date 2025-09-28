@@ -94,7 +94,6 @@ const Footer: React.FC = () => {
             <FooterLink to="/">{t('footer.home')}</FooterLink>
             <FooterLink to="/dashboard">{t('footer.dashboard')}</FooterLink>
             <FooterLink to="/case-studies">{t('footer.caseStudies')}</FooterLink>
-            <FooterLink to="/">{t('footer.reports')}</FooterLink>
             <FooterLink to="/">{t('footer.contactUs')}</FooterLink>
           </FooterSection>
           

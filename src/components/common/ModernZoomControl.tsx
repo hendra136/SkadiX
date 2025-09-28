@@ -10,7 +10,7 @@ interface ModernZoomControlProps {
 const ZoomControlContainer = styled.div<{ position: string }>`
   position: absolute;
   z-index: 1000;
-  display: flex;
+  display: none; /* Hide zoom controls completely */
   flex-direction: column;
   gap: 2px;
   

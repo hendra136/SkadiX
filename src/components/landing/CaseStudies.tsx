@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Slider from "react-slick";
 import Button from "../common/Button";
 import { useAppContext } from "../../context/AppContext";
+import useWindowSize from "../../hooks/useWindowSize";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const CaseStudiesContainer = styled.section`
   padding: 5rem 2rem;
@@ -74,10 +78,15 @@ const CaseStudyCard = styled.div`
   -webkit-backdrop-filter: blur(20px);
 
   /* Border and Shadow */
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 5px solid rgba(255, 255, 255, 0.4);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 61, 130, 0.1), 0 4px 16px rgba(0, 61, 130, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: 
+    0 15px 40px rgba(0, 61, 130, 0.12),
+    0 8px 20px rgba(0, 61, 130, 0.1),
+    0 4px 10px rgba(0, 61, 130, 0.08),
+    0 2px 6px rgba(0, 61, 130, 0.06),
+    inset 0 2px 0 rgba(255, 255, 255, 0.3);
 
   /* Transitions */
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -99,9 +108,14 @@ const CaseStudyCard = styled.div`
   /* Hover Effects */
   &:hover {
     transform: translateY(-12px) scale(1.02);
-    background: rgba(255, 255, 255, 0.4);
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 20px 40px rgba(0, 61, 130, 0.15), 0 8px 24px rgba(0, 61, 130, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.45);
+    border: 5px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 
+      0 30px 60px rgba(0, 61, 130, 0.18),
+      0 15px 30px rgba(0, 61, 130, 0.15),
+      0 8px 16px rgba(0, 61, 130, 0.12),
+      0 4px 8px rgba(0, 61, 130, 0.08),
+      inset 0 3px 0 rgba(255, 255, 255, 0.4);
 
     &::before {
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(0, 61, 130, 0.03) 100%);
@@ -135,9 +149,9 @@ const CaseStudyImage = styled.div<{ imageUrl: string }>`
 `;
 
 const CaseStudyContent = styled.div`
-  padding: 2rem 1.5rem;
+  padding: 1.5rem 1.25rem;
 
-  /* Enhanced glass background for content */
+  /* Frosted Glass Effect */
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border-top: 1px solid rgba(255, 255, 255, 0.3);
@@ -150,8 +164,12 @@ const CaseStudyTitle = styled.h3`
   font-weight: 600;
   font-family: ${({ theme }) => theme.fonts.heading};
 
-  /* Text shadow for better readability on glass */
+  /* Enhanced readability */
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 1.1rem;
+  }
 `;
 
 const CaseStudyDescription = styled.p`
@@ -160,16 +178,26 @@ const CaseStudyDescription = styled.p`
   line-height: 1.6;
   font-size: 0.95rem;
 
-  /* Enhanced readability */
+  /* Enhanced glass background for description */
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
   font-weight: 400;
 
-  /* Better contrast background */
+  /* Frosted Glass Effect for description */
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(5px);
   padding: 1rem;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.25);
+
+  /* Text truncation for mobile */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 0.85rem;
+  }
 `;
 
 const CaseStudyMeta = styled.div`
@@ -198,8 +226,73 @@ const ViewAllContainer = styled.div`
   z-index: 2;
 `;
 
+const SliderWrapper = styled.div`
+  margin: 2rem 0;
+  position: relative;
+  z-index: 2;
+`;
+
+const CarouselContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  padding: 0 1rem;
+
+  .slick-dots {
+    bottom: -50px;
+    margin-bottom: 20px;
+    
+    li button:before {
+      font-size: 12px;
+      color: ${({ theme }) => theme.colors.primary};
+      opacity: 0.5;
+    }
+    
+    li.slick-active button:before {
+      opacity: 1;
+      color: ${({ theme }) => theme.colors.primary};
+    }
+  }
+
+  .slick-slide {
+    padding: 0 0.5rem;
+  }
+
+  .slick-track {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .slick-slide > div {
+    height: 100%;
+  }
+`;
+
+const CarouselCard = styled(CaseStudyCard)`
+  height: 100%;
+  margin: 0;
+`;
+
 const CaseStudies: React.FC = () => {
   const { t } = useAppContext();
+  const { width } = useWindowSize();
+  
+  // Mobile breakpoint - 768px
+  const isMobile = width <= 768;
+
+  // Slider settings for mobile carousel - one full card display
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    autoplay: false,
+    adaptiveHeight: true,
+    centerMode: false,
+  };
 
   const caseStudies = [
     {
@@ -231,21 +324,50 @@ const CaseStudies: React.FC = () => {
   return (
     <CaseStudiesContainer id="case-studies">
       <CaseStudiesTitle>{t("landing.caseStudies.title")}</CaseStudiesTitle>
-      <CaseStudiesGrid>
-        {caseStudies.map((study) => (
-          <CaseStudyCard key={study.id}>
-            <CaseStudyImage imageUrl={study.imageUrl} />
-            <CaseStudyContent>
-              <CaseStudyTitle>{study.title}</CaseStudyTitle>
-              <CaseStudyDescription>{study.description}</CaseStudyDescription>
-              <CaseStudyMeta>
-                <span>{study.date}</span>
-                <span>{study.author}</span>
-              </CaseStudyMeta>
-            </CaseStudyContent>
-          </CaseStudyCard>
-        ))}
-      </CaseStudiesGrid>
+      
+      {/* Conditional rendering based on screen size */}
+      {isMobile ? (
+        // Mobile: Carousel/Slider
+        <SliderWrapper>
+          <CarouselContainer>
+            <Slider {...sliderSettings}>
+              {caseStudies.map((study) => (
+                <div key={study.id}>
+                  <CarouselCard>
+                    <CaseStudyImage imageUrl={study.imageUrl} />
+                    <CaseStudyContent>
+                      <CaseStudyTitle>{study.title}</CaseStudyTitle>
+                      <CaseStudyDescription>{study.description}</CaseStudyDescription>
+                      <CaseStudyMeta>
+                        <span>{study.date}</span>
+                        <span>{study.author}</span>
+                      </CaseStudyMeta>
+                    </CaseStudyContent>
+                  </CarouselCard>
+                </div>
+              ))}
+            </Slider>
+          </CarouselContainer>
+        </SliderWrapper>
+      ) : (
+        // Desktop: Grid Layout
+        <CaseStudiesGrid>
+          {caseStudies.map((study) => (
+            <CaseStudyCard key={study.id}>
+              <CaseStudyImage imageUrl={study.imageUrl} />
+              <CaseStudyContent>
+                <CaseStudyTitle>{study.title}</CaseStudyTitle>
+                <CaseStudyDescription>{study.description}</CaseStudyDescription>
+                <CaseStudyMeta>
+                  <span>{study.date}</span>
+                  <span>{study.author}</span>
+                </CaseStudyMeta>
+              </CaseStudyContent>
+            </CaseStudyCard>
+          ))}
+        </CaseStudiesGrid>
+      )}
+      
       <ViewAllContainer>
         <Button as={Link} to="/case-studies" variant="generateReport">
           {t("landing.caseStudies.viewAll")}

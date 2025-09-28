@@ -20,28 +20,30 @@ const IndicatorContainer = styled.div`
   background-color: rgba(255, 255, 255, 0.95);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    min-width: 260px;
-    max-width: 320px;
-    padding: 14px;
+    min-width: 240px;
+    max-width: 300px;
+    padding: 12px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     position: fixed;
-    top: 70px;
-    right: 10px;
-    min-width: 240px;
-    max-width: 280px;
-    padding: 12px;
+    /* Navbar height (55px) + 8px spacing = 63px */
+    top: 63px;
+    right: 8px;
+    min-width: 220px;
+    max-width: 260px;
+    padding: 10px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    top: 65px;
-    right: 8px;
-    left: 8px;
+    /* Navbar height (50px) + 8px spacing = 58px */
+    top: 58px;
+    right: 6px;
+    left: 6px;
     min-width: auto;
     max-width: none;
-    width: calc(100% - 16px);
-    padding: 10px;
+    width: calc(100% - 12px);
+    padding: 8px;
   }
 `;
 
@@ -60,20 +62,20 @@ const IndicatorTitle = styled.h3`
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     flex-wrap: wrap;
-    margin-bottom: 10px;
-    padding-bottom: 4px;
-    gap: 6px;
+    margin-bottom: 8px;
+    padding-bottom: 3px;
+    gap: 5px;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     flex-direction: row;
     align-items: center;
-    gap: 6px;
-    margin-bottom: 8px;
-    padding-bottom: 3px;
+    gap: 4px;
+    margin-bottom: 6px;
+    padding-bottom: 2px;
   }
 `;
 

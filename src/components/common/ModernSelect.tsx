@@ -1,157 +1,426 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useFloating, autoUpdate, offset, flip, shift, size as sizeMiddleware } from '@floating-ui/react';
 
-interface ModernSelectProps {
+export interface SelectOption {
   value: string;
-  onChange: (value: string) => void;
-  options: { value: string; label: string }[];
-  placeholder?: string;
-  disabled?: boolean;
-  className?: string;
-  size?: 'small' | 'medium' | 'large';
-  style?: React.CSSProperties;
+  label: string;
 }
 
-const SelectContainer = styled.div<{ size: 'small' | 'medium' | 'large' }>`
+export interface ModernSelectProps {
+  value: string;
+  onChange: (value: string) => void;
+  options: SelectOption[];
+  placeholder?: string;
+  size?: 'small' | 'medium' | 'large';
+  disabled?: boolean;
+  error?: boolean;
+  className?: string;
+}
+
+const SelectContainer = styled.div`
   position: relative;
   width: 100%;
-  min-width: ${props => {
-    switch (props.size) {
-      case 'small': return '120px';
-      case 'large': return '200px';
-      default: return '160px';
-    }
-  }};
 `;
 
-const selectStyles = {
-  base: `
-    width: 100%;
-    font-weight: 500;
-    color: #333333;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
-    outline: none;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230077b6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    background-size: 16px;
-    box-shadow: 0 2px 8px rgba(0, 61, 130, 0.08);
-  `,
-  small: 'padding: 8px 32px 8px 12px; font-size: 13px;',
-  medium: 'padding: 12px 36px 12px 14px; font-size: 14px;',
-  large: 'padding: 16px 40px 16px 16px; font-size: 16px;'
-};
+const SelectTrigger = styled.button<{ 
+  size: 'small' | 'medium' | 'large'; 
+  error?: boolean; 
+  isOpen?: boolean;
+  disabled?: boolean;
+}>`
+  width: 100%;
+  padding: ${({ size }) => {
+    switch (size) {
+      case 'small': return '0.5rem 2rem 0.5rem 0.75rem';
+      case 'large': return '0.875rem 2.5rem 0.875rem 1rem';
+      default: return '0.75rem 2.25rem 0.75rem 0.875rem';
+    }
+  }};
+  border: 2px solid ${({ error, theme }) => 
+    error ? '#ef4444' : 'rgba(0, 119, 182, 0.2)'
+  };
+  border-radius: 8px;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.95) 0%, 
+    rgba(248, 250, 252, 0.9) 100%
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: ${({ theme }) => theme.colors?.text || '#333'};
+  font-size: ${({ size }) => {
+    switch (size) {
+      case 'small': return '0.875rem';
+      case 'large': return '1rem';
+      default: return '0.9rem';
+    }
+  }};
+  font-weight: 500;
+  cursor: ${({ disabled }) => disabled ? 'not-allowed' : 'pointer'};
+  transition: all 0.2s ease;
+  text-align: left;
+  position: relative;
+  opacity: ${({ disabled }) => disabled ? 0.6 : 1};
+  
+  /* Arrow icon */
+  &::after {
+    content: '';
+    position: absolute;
+    right: ${({ size }) => {
+      switch (size) {
+        case 'small': return '0.75rem';
+        case 'large': return '1rem';
+        default: return '0.875rem';
+      }
+    }};
+    top: 50%;
+    transform: translateY(-50%) ${({ isOpen }) => isOpen ? 'rotate(180deg)' : 'rotate(0deg)'};
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid ${({ theme }) => theme.colors?.primary || '#0077b6'};
+    transition: transform 0.2s ease;
+  }
 
-const StyledSelect = styled.select`
-  ${selectStyles.base}
-  ${(props: any) => selectStyles[props['data-size'] as keyof typeof selectStyles] || selectStyles.medium}
-
-  &:hover {
-    border-color: rgba(0, 119, 182, 0.5);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 100%);
-    box-shadow: 0 4px 16px rgba(0, 61, 130, 0.12);
-    transform: translateY(-1px);
+  &:hover:not(:disabled) {
+    border-color: ${({ theme }) => theme.colors?.primary || '#0077b6'};
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 1) 0%, 
+      rgba(248, 250, 252, 0.95) 100%
+    );
+    box-shadow: 0 4px 12px rgba(0, 119, 182, 0.15);
   }
 
   &:focus {
-    border-color: rgba(0, 119, 182, 0.7);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 100%);
-    box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.1), 0 4px 16px rgba(0, 61, 130, 0.15);
+    outline: none;
+    border-color: ${({ theme }) => theme.colors?.primary || '#0077b6'};
+    box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.1);
   }
 
-  &:focus-visible {
-    outline: 2px solid rgba(0, 119, 182, 0.5);
-    outline-offset: 2px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: ${({ size }) => {
+      switch (size) {
+        case 'small': return '0.5rem 1.75rem 0.5rem 0.625rem';
+        case 'large': return '0.75rem 2rem 0.75rem 0.875rem';
+        default: return '0.625rem 2rem 0.625rem 0.75rem';
+      }
+    }};
+    font-size: ${({ size }) => {
+      switch (size) {
+        case 'small': return '0.8rem';
+        case 'large': return '0.95rem';
+        default: return '0.85rem';
+      }
+    }};
   }
 
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    background: rgba(243, 244, 246, 0.8);
-    border-color: rgba(209, 213, 219, 0.5);
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: ${({ size }) => {
+      switch (size) {
+        case 'small': return '0.5rem 1.5rem 0.5rem 0.5rem';
+        case 'large': return '0.625rem 1.75rem 0.625rem 0.75rem';
+        default: return '0.5rem 1.75rem 0.5rem 0.625rem';
+      }
+    }};
+    font-size: ${({ size }) => {
+      switch (size) {
+        case 'small': return '0.75rem';
+        case 'large': return '0.9rem';
+        default: return '0.8rem';
+      }
+    }};
+  }
+`;
 
-    &:hover {
-      background: rgba(243, 244, 246, 0.8);
-      border-color: rgba(209, 213, 219, 0.5);
-      box-shadow: none;
-      transform: none;
-    }
+const DropdownMenu = styled.div<{ size: 'small' | 'medium' | 'large' }>`
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.98) 0%, 
+    rgba(248, 250, 252, 0.95) 100%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 119, 182, 0.2);
+  border-radius: 8px;
+  box-shadow: 
+    0 10px 25px rgba(0, 61, 130, 0.15),
+    0 4px 12px rgba(0, 61, 130, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  min-width: 100%;
+  
+  /* Custom scrollbar */
+  &::-webkit-scrollbar {
+    width: 4px;
   }
 
-  option {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%);
-    color: #333333;
-    padding: 10px 14px;
-    font-weight: 500;
-    border: none;
-    margin: 2px 0;
-
-    &:hover {
-      background: linear-gradient(135deg, rgba(0, 119, 182, 0.1) 0%, rgba(0, 61, 130, 0.05) 100%);
-      color: #0077b6;
-    }
-
-    &:checked,
-    &:selected {
-      background: linear-gradient(135deg, #0077b6 0%, #005f73 100%);
-      color: #ffffff;
-      font-weight: 600;
-    }
-
-    &:disabled {
-      opacity: 0.5;
-      color: #9ca3af;
-    }
+  &::-webkit-scrollbar-track {
+    background: rgba(241, 245, 249, 0.3);
+    border-radius: 2px;
   }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, 
+      rgba(0, 119, 182, 0.6) 0%, 
+      rgba(0, 95, 115, 0.4) 100%
+    );
+    border-radius: 2px;
+  }
+`;
+
+const DropdownOption = styled.div<{ 
+  size: 'small' | 'medium' | 'large';
+  isSelected?: boolean;
+  isHighlighted?: boolean;
+}>`
+  padding: ${({ size }) => {
+    switch (size) {
+      case 'small': return '0.5rem 0.75rem';
+      case 'large': return '0.875rem 1rem';
+      default: return '0.75rem 0.875rem';
+    }
+  }};
+  font-size: ${({ size }) => {
+    switch (size) {
+      case 'small': return '0.875rem';
+      case 'large': return '1rem';
+      default: return '0.9rem';
+    }
+  }};
+  color: ${({ theme, isSelected }) => 
+    isSelected ? (theme.colors?.primary || '#0077b6') : (theme.colors?.text || '#333')
+  };
+  background: ${({ isHighlighted, isSelected }) => {
+    if (isSelected) return 'rgba(0, 119, 182, 0.1)';
+    if (isHighlighted) return 'rgba(0, 119, 182, 0.05)';
+    return 'transparent';
+  }};
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-weight: ${({ isSelected }) => isSelected ? '600' : '500'};
+  border-left: ${({ isSelected, theme }) => 
+    isSelected ? `3px solid ${theme.colors?.primary || '#0077b6'}` : '3px solid transparent'
+  };
+
+  &:hover {
+    background: rgba(0, 119, 182, 0.08);
+    color: ${({ theme }) => theme.colors?.primary || '#0077b6'};
+  }
+
+  &:first-child {
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+  }
+
+  &:last-child {
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: ${({ size }) => {
+      switch (size) {
+        case 'small': return '0.5rem 0.625rem';
+        case 'large': return '0.75rem 0.875rem';
+        default: return '0.625rem 0.75rem';
+      }
+    }};
+    font-size: ${({ size }) => {
+      switch (size) {
+        case 'small': return '0.8rem';
+        case 'large': return '0.95rem';
+        default: return '0.85rem';
+      }
+    }};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: ${({ size }) => {
+      switch (size) {
+        case 'small': return '0.5rem 0.5rem';
+        case 'large': return '0.625rem 0.75rem';
+        default: return '0.5rem 0.625rem';
+      }
+    }};
+    font-size: ${({ size }) => {
+      switch (size) {
+        case 'small': return '0.75rem';
+        case 'large': return '0.9rem';
+        default: return '0.8rem';
+      }
+    }};
+  }
+`;
+
+const PlaceholderText = styled.span`
+  color: #9ca3af;
+  font-style: italic;
 `;
 
 const ModernSelect: React.FC<ModernSelectProps> = ({
   value,
   onChange,
   options,
-  placeholder = "Select an option",
-  disabled = false,
-  className,
+  placeholder = 'Select an option',
   size = 'medium',
-  style
+  disabled = false,
+  error = false,
+  className
 }) => {
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    onChange(event.target.value);
+  const [isOpen, setIsOpen] = useState(false);
+  const [highlightedIndex, setHighlightedIndex] = useState(-1);
+  
+  const { refs, floatingStyles, update } = useFloating({
+    open: isOpen,
+    onOpenChange: setIsOpen,
+    middleware: [
+       offset(4),
+       flip(),
+       shift({ padding: 8 }),
+       sizeMiddleware({
+         apply({ rects, elements }) {
+           Object.assign(elements.floating.style, {
+             minWidth: `${rects.reference.width}px`,
+           });
+         },
+       }),
+     ],
+    whileElementsMounted: autoUpdate,
+  });
+
+  const selectedOption = options.find(option => option.value === value);
+
+  const handleToggle = () => {
+    if (!disabled) {
+      setIsOpen(!isOpen);
+      setHighlightedIndex(-1);
+      // Force update positioning when opening
+      if (!isOpen) {
+        setTimeout(() => update(), 0);
+      }
+    }
   };
 
+  const handleOptionClick = (optionValue: string) => {
+    onChange(optionValue);
+    setIsOpen(false);
+    setHighlightedIndex(-1);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (disabled) return;
+
+    switch (e.key) {
+      case 'Enter':
+      case ' ':
+        e.preventDefault();
+        if (isOpen && highlightedIndex >= 0) {
+          handleOptionClick(options[highlightedIndex].value);
+        } else {
+          setIsOpen(!isOpen);
+        }
+        break;
+      case 'Escape':
+        setIsOpen(false);
+        setHighlightedIndex(-1);
+        break;
+      case 'ArrowDown':
+        e.preventDefault();
+        if (!isOpen) {
+          setIsOpen(true);
+        } else {
+          setHighlightedIndex(prev => 
+            prev < options.length - 1 ? prev + 1 : 0
+          );
+        }
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        if (!isOpen) {
+          setIsOpen(true);
+        } else {
+          setHighlightedIndex(prev => 
+            prev > 0 ? prev - 1 : options.length - 1
+          );
+        }
+        break;
+    }
+  };
+
+  // Close dropdown when clicking outside
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      // Ensure event target is a valid Node
+      if (!event.target || !(event.target instanceof Node)) {
+        return;
+      }
+      
+      const target = event.target;
+      const floatingEl = refs.floating.current;
+      const referenceEl = refs.reference.current;
+      
+      // Check if floating/reference elements are HTMLElements with contains method
+      if (floatingEl && floatingEl instanceof HTMLElement &&
+          referenceEl && referenceEl instanceof HTMLElement &&
+          !floatingEl.contains(target) &&
+          !referenceEl.contains(target)) {
+        setIsOpen(false);
+        setHighlightedIndex(-1);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [isOpen, refs.floating, refs.reference]);
+
   return (
-    <SelectContainer size={size} className={className}>
-      <StyledSelect
-        value={value}
-        onChange={handleChange}
+    <SelectContainer className={className}>
+      <SelectTrigger
+        ref={refs.setReference}
+        size={size}
+        error={error}
+        isOpen={isOpen}
         disabled={disabled}
-        data-size={size}
-        style={style}
-        aria-label={placeholder || 'Select an option'}
-        role="combobox"
-        aria-expanded="false"
+        onClick={handleToggle}
+        onKeyDown={handleKeyDown}
         aria-haspopup="listbox"
+        aria-expanded={isOpen}
+        aria-label={placeholder}
       >
-        {placeholder && (
-          <option value="" disabled>
-            {placeholder}
-          </option>
+        {selectedOption ? (
+          selectedOption.label
+        ) : (
+          <PlaceholderText>{placeholder}</PlaceholderText>
         )}
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </StyledSelect>
+      </SelectTrigger>
+
+      {isOpen && (
+        <DropdownMenu
+          ref={refs.setFloating}
+          style={floatingStyles}
+          size={size}
+          role="listbox"
+        >
+          {options.map((option, index) => (
+            <DropdownOption
+              key={option.value}
+              size={size}
+              isSelected={option.value === value}
+              isHighlighted={index === highlightedIndex}
+              onClick={() => handleOptionClick(option.value)}
+              onMouseEnter={() => setHighlightedIndex(index)}
+              role="option"
+              aria-selected={option.value === value}
+            >
+              {option.label}
+            </DropdownOption>
+          ))}
+        </DropdownMenu>
+      )}
     </SelectContainer>
   );
 };
