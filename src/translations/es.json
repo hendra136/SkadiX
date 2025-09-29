@@ -1,6 +1,8 @@
 {
   "navbar": {
     "home": "Inicio",
+    "dashboard": "Panel de Control",
+    "scenarioStudio": "Estudio de Escenarios",
     "caseStudies": "Casos de Estudio",
     "reports": "Informes",
     "contact": "Contacto"
@@ -168,6 +170,34 @@
       "dummyDataNote": "Datos Simulados: Estos son datos simulados para demostración. El análisis real integrará modelos ML con recursos de Blue-Cloud y EDITO Digital Twin Ocean.",
       "refreshAnalysis": "Actualizar Análisis"
     }
+  },
+  "scenarioStudio": {
+    "title": "Estudio de Escenarios",
+    "subtitle": "Construir y comparar escenarios hipotéticos",
+    "factorWeights": "Pesos de Factores",
+    "infrastructure": "Infraestructura",
+    "energy": "Energía",
+    "risk": "Riesgo",
+    "socioeconomic": "Socioeconómico",
+    "connectivity": "Conectividad",
+    "editosScenario": "Escenario EDITO",
+    "planningHorizon": "Horizonte de Planificación",
+    "saveScenario": "Guardar Escenario",
+    "shareUrl": "Compartir URL",
+    "scenarioName": "Nombre del escenario",
+    "scenarioDescription": "Descripción (opcional)",
+    "savedScenarios": "Escenarios Guardados",
+    "baselineScenario": "Escenario Base",
+    "currentScenario": "Escenario Actual",
+    "default": "Por Defecto",
+    "custom": "Personalizado",
+    "overallScore": "Puntuación General",
+    "riskLevel": "Nivel de Riesgo",
+    "energyEfficiency": "Eficiencia Energética",
+    "infrastructureReadiness": "Infraestructura",
+    "delete": "Eliminar",
+    "load": "Cargar",
+    "duplicate": "Duplicar"
   },
   "landing": {
     "callToAction": {
