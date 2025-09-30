@@ -1,7 +1,10 @@
 {
   "navbar": {
     "home": "Accueil",
-    "about": "À propos",
+    "dashboard": "Tableau de Bord",
+    "scenarioStudio": "Studio de Scénarios",
+    "caseStudies": "Études de Cas",
+    "reports": "Rapports",
     "contact": "Contact",
     "language": "Langue"
   },
@@ -165,6 +168,34 @@
       "dummyDataNote": "Données Fictives : Il s'agit de données simulées à des fins de démonstration. L'analyse réelle intégrera des modèles ML avec les ressources Blue-Cloud et EDITO Digital Twin Ocean.",
       "refreshAnalysis": "Actualiser l'Analyse"
     }
+  },
+  "scenarioStudio": {
+    "title": "Studio de Scénarios",
+    "subtitle": "Construire et comparer des scénarios hypothétiques",
+    "factorWeights": "Poids des Facteurs",
+    "infrastructure": "Infrastructure",
+    "energy": "Énergie",
+    "risk": "Risque",
+    "socioeconomic": "Socio-économique",
+    "connectivity": "Connectivité",
+    "editosScenario": "Scénario EDITO",
+    "planningHorizon": "Horizon de Planification",
+    "saveScenario": "Sauvegarder le Scénario",
+    "shareUrl": "Partager l'URL",
+    "scenarioName": "Nom du scénario",
+    "scenarioDescription": "Description (optionnel)",
+    "savedScenarios": "Scénarios Sauvegardés",
+    "baselineScenario": "Scénario de Base",
+    "currentScenario": "Scénario Actuel",
+    "default": "Par Défaut",
+    "custom": "Personnalisé",
+    "overallScore": "Score Global",
+    "riskLevel": "Niveau de Risque",
+    "energyEfficiency": "Efficacité Énergétique",
+    "infrastructureReadiness": "Infrastructure",
+    "delete": "Supprimer",
+    "load": "Charger",
+    "duplicate": "Dupliquer"
   },
   "landing": {
     "callToAction": {

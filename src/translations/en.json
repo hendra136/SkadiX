@@ -1,6 +1,8 @@
 {
   "navbar": {
     "home": "Home",
+    "dashboard": "Dashboard",
+    "scenarioStudio": "Scenario Studio",
     "caseStudies": "Case Studies",
     "reports": "Reports",
     "contact": "Contact"
@@ -168,6 +170,34 @@
       "dummyDataNote": "Dummy Data: This is simulated data for demonstration. Real analysis will integrate ML models with Blue-Cloud and EDITO Digital Twin Ocean resources.",
       "refreshAnalysis": "Refresh Analysis"
     }
+  },
+  "scenarioStudio": {
+    "title": "Scenario Studio",
+    "subtitle": "Build and compare what-if scenarios",
+    "factorWeights": "Factor Weights",
+    "infrastructure": "Infrastructure",
+    "energy": "Energy",
+    "risk": "Risk",
+    "socioeconomic": "Socioeconomic",
+    "connectivity": "Connectivity",
+    "editosScenario": "EDITO Scenario",
+    "planningHorizon": "Planning Horizon",
+    "saveScenario": "Save Scenario",
+    "shareUrl": "Share URL",
+    "scenarioName": "Scenario name",
+    "scenarioDescription": "Description (optional)",
+    "savedScenarios": "Saved Scenarios",
+    "baselineScenario": "Baseline Scenario",
+    "currentScenario": "Current Scenario",
+    "default": "Default",
+    "custom": "Custom",
+    "overallScore": "Overall Score",
+    "riskLevel": "Risk Level",
+    "energyEfficiency": "Energy Efficiency",
+    "infrastructureReadiness": "Infrastructure",
+    "delete": "Delete",
+    "load": "Load",
+    "duplicate": "Duplicate"
   },
   "landing": {
     "callToAction": {

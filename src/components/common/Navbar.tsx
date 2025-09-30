@@ -557,6 +557,8 @@ const Navbar: React.FC = () => {
         <CenterContainer>
           <NavLinks>
             <NavLink to="/">{t("navbar.home")}</NavLink>
+            <NavLink to="/dashboard">{t("navbar.dashboard")}</NavLink>
+            <NavLink to="/scenario-studio">{t("navbar.scenarioStudio")}</NavLink>
             <NavLink to="/case-studies">{t("navbar.caseStudies")}</NavLink>
             <NavLink to="#" onClick={handleContactClick}>
               {t("navbar.contact")}
@@ -583,6 +585,12 @@ const Navbar: React.FC = () => {
       <MobileMenu isOpen={isMenuOpen}>
         <MobileNavLink to="/" onClick={() => setIsMenuOpen(false)}>
           {t("navbar.home")}
+        </MobileNavLink>
+        <MobileNavLink to="/dashboard" onClick={() => setIsMenuOpen(false)}>
+          {t("navbar.dashboard")}
+        </MobileNavLink>
+        <MobileNavLink to="/scenario-studio" onClick={() => setIsMenuOpen(false)}>
+          {t("navbar.scenarioStudio")}
         </MobileNavLink>
         <MobileNavLink to="/case-studies" onClick={() => setIsMenuOpen(false)}>
           {t("navbar.caseStudies")}

@@ -34,6 +34,18 @@ const CTADescription = styled.p`
   }
 `;
 
+const ButtonGroup = styled.div`
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
 const CallToAction: React.FC = () => {
   const { t } = useAppContext();
 
@@ -41,9 +53,14 @@ const CallToAction: React.FC = () => {
     <CTAContainer>
       <CTATitle>{t("landing.callToAction.title")}</CTATitle>
       <CTADescription>{t("landing.callToAction.description")}</CTADescription>
-      <Button as={Link} to="/dashboard" size="large" variant="generateReport">
-        {t("landing.callToAction.button")}
-      </Button>
+      <ButtonGroup>
+        <Button as={Link} to="/dashboard" size="large" variant="generateReport">
+          {t("landing.callToAction.button")}
+        </Button>
+        <Button as={Link} to="/scenario-studio" size="large" variant="generateReport">
+          {t("navbar.scenarioStudio")}
+        </Button>
+      </ButtonGroup>
     </CTAContainer>
   );
 };

@@ -1,6 +1,8 @@
 {
   "navbar": {
     "home": "Home",
+    "dashboard": "Dashboard",
+    "scenarioStudio": "Scenario Studio",
     "caseStudies": "Casestudies",
     "reports": "Rapporten",
     "contact": "Contact"
@@ -168,6 +170,34 @@
       "dummyDataNote": "Gesimuleerde Gegevens: Dit zijn gesimuleerde gegevens voor demonstratie. Echte analyse zal ML-modellen integreren met Blue-Cloud en EDITO Digital Twin Ocean bronnen.",
       "refreshAnalysis": "Analyse Vernieuwen"
     }
+  },
+  "scenarioStudio": {
+    "title": "Scenario Studio",
+    "subtitle": "Bouw en vergelijk wat-als scenario's",
+    "factorWeights": "Factor Gewichten",
+    "infrastructure": "Infrastructuur",
+    "energy": "Energie",
+    "risk": "Risico",
+    "socioeconomic": "Sociaal-economisch",
+    "connectivity": "Connectiviteit",
+    "editosScenario": "EDITO Scenario",
+    "planningHorizon": "Planningshorizon",
+    "saveScenario": "Scenario Opslaan",
+    "shareUrl": "URL Delen",
+    "scenarioName": "Scenario naam",
+    "scenarioDescription": "Beschrijving (optioneel)",
+    "savedScenarios": "Opgeslagen Scenario's",
+    "baselineScenario": "Basislijn Scenario",
+    "currentScenario": "Huidig Scenario",
+    "default": "Standaard",
+    "custom": "Aangepast",
+    "overallScore": "Algemene Score",
+    "riskLevel": "Risiconiveau",
+    "energyEfficiency": "Energie-efficiëntie",
+    "infrastructureReadiness": "Infrastructuur",
+    "delete": "Verwijderen",
+    "load": "Laden",
+    "duplicate": "Dupliceren"
   },
   "landing": {
     "callToAction": {
