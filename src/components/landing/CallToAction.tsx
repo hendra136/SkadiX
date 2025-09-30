@@ -57,7 +57,7 @@ const CallToAction: React.FC = () => {
         <Button as={Link} to="/dashboard" size="large" variant="generateReport">
           {t("landing.callToAction.button")}
         </Button>
-        <Button as={Link} to="/scenario-studio" size="large" variant="secondary">
+        <Button as={Link} to="/scenario-studio" size="large" variant="generateReport">
           {t("navbar.scenarioStudio")}
         </Button>
       </ButtonGroup>
