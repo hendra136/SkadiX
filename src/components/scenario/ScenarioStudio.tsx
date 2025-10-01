@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAppContext } from '../../context/AppContext';
 import ModernSelect from '../common/ModernSelect';
 import Button from '../common/Button';
+import Navbar from '../common/Navbar';
 import {
   StudioContainer,
   LeftPanel,
@@ -219,7 +220,9 @@ const ScenarioStudio: React.FC = () => {
   const currentResults = calculateResults(normalizeWeights(currentWeights), selectedEDITOScenario);
 
   return (
-    <StudioContainer>
+    <>
+      <Navbar />
+      <StudioContainer>
       <LeftPanel>
         <Header>
           <Title>{t('scenarioStudio.title')}</Title>
@@ -483,6 +486,7 @@ const ScenarioStudio: React.FC = () => {
         </ComparisonGrid>
       </RightPanel>
     </StudioContainer>
+    </>
   );
 };
 

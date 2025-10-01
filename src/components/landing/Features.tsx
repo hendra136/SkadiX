@@ -24,7 +24,7 @@ const FeaturesContainer = styled.section`
 const FeaturesTitle = styled.h2`
   font-size: 2.5rem;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
   color: ${({ theme }) => theme.colors.secondary};
   font-weight: 700;
   position: relative;
@@ -44,6 +44,22 @@ const FeaturesTitle = styled.h2`
     height: 4px;
     background: linear-gradient(90deg, ${({ theme }) => theme.colors.primary}, ${({ theme }) => theme.colors.accent});
     border-radius: 2px;
+  }
+`;
+
+const FeaturesDescription = styled.p`
+  font-size: 1.125rem;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  color: ${({ theme }) => theme.colors.text};
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 1rem;
+    margin-bottom: 2rem;
   }
 `;
 
@@ -196,6 +212,7 @@ const Features: React.FC = () => {
   return (
     <FeaturesContainer id="features">
       <FeaturesTitle>{t("landing.features.title")}</FeaturesTitle>
+      <FeaturesDescription>{t("landing.features.description")}</FeaturesDescription>
       <FeaturesGrid>
         {features.map((feature, index) => (
           <FeatureCard key={index}>

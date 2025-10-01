@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
+
 // Styled components for Scenario Studio
 export const StudioContainer = styled.div`
   display: flex;
-  height: 100vh;
+  height: calc(100vh - 70px);
+  margin-top: 70px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   font-family: 'Inter', sans-serif;
 `;

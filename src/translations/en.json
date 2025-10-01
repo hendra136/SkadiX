@@ -8,10 +8,10 @@
     "contact": "Contact"
   },
   "hero": {
-    "title": "SkadiX - Cold-Chain Logistics Infrastructure",
-    "subtitle": "A data-driven decision-support tool to identify the suitability levels of European coastal cities and ports for cold-chain logistics infrastructure. Supporting food security, fisheries, and temperature-sensitive supply chains.",
-    "tryTool": "Try the Tool",
-    "viewCaseStudies": "View Case Studies"
+    "title": "SkadiX – Smarter Ports for a Resilient Future",
+    "subtitle": "An AI-powered tool to identify the best European coastal cities and ports for cold-chain logistics. Secure food, fisheries, and pharmaceuticals by planning climate-resilient, cost-efficient infrastructure.",
+    "tryTool": "Start Analyzing",
+    "viewCaseStudies": "Explore Case Studies"
   },
   "footer": {
     "callToAction": {
@@ -201,33 +201,35 @@
   },
   "landing": {
     "callToAction": {
-      "title": "Ready to Analyze Sea Level Impact on Ports?",
-      "description": "Start using our interactive tool today to visualize sea level rise predictions and make informed decisions for port infrastructure planning.",
-      "button": "Try the Tool Now"
+      "title": "Ready to Future-Proof Europe's Cold-Chain Logistics?",
+      "description": "Leverage data-driven insights to build resilient port infrastructure, cut food waste, and strengthen Europe's blue economy.",
+      "button": "Try SkadiX Now",
+      "secondButton": "Run a Scenario"
     },
     "howItWorks": {
-      "title": "How It Works",
+      "title": "How SkadiX Works",
       "steps": {
         "selectPort": {
           "title": "Select a Port",
-          "description": "Choose from major international ports to analyze sea level rise impact. Our database includes detailed information on port infrastructure, elevation, and historical tide data."
+          "description": "Choose from Europe's major ports to analyze cold-chain potential."
         },
         "chooseScenario": {
-          "title": "Choose Scenario and Year",
-          "description": "Select from different climate scenarios (low, medium, or high emissions) and projection years to see how sea levels might change over time under various conditions."
+          "title": "Choose Scenario & Year",
+          "description": "Explore different climate and economic futures."
         },
         "adjustParameters": {
           "title": "Adjust Parameters",
-          "description": "Fine-tune your analysis by adjusting the weight of different factors such as elevation, tide patterns, infrastructure resilience, and historical flood risk."
+          "description": "Fine-tune based on infrastructure, cost, and resilience."
         },
         "visualizeResults": {
           "title": "Visualize Results",
-          "description": "View the results on an interactive map showing predicted flood zones, risk levels, and port usability status. Generate detailed reports for planning and decision-making."
+          "description": "See risk maps, rankings, and future-proof investment insights."
         }
       }
     },
     "features": {
       "title": "Core Features",
+      "description": "Cold storage and refrigerated transport keep Europe's food, fisheries, and medicines safe. But where should we invest next? SkadiX helps decision-makers rank ports by infrastructure, connectivity, costs, and climate risks — making complex choices simple, transparent, and future-ready.",
       "dataIntegration": {
         "title": "Data Integration",
         "description": "Comprehensive data from multiple sources including satellite measurements, tide gauges, and climate models to provide accurate sea level predictions."
