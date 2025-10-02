@@ -232,15 +232,15 @@
       "description": "Cold storage and refrigerated transport keep Europe's food, fisheries, and medicines safe. But where should we invest next? SkadiX helps decision-makers rank ports by infrastructure, connectivity, costs, and climate risks — making complex choices simple, transparent, and future-ready.",
       "dataIntegration": {
         "title": "Data Integration",
-        "description": "Comprehensive data from multiple sources including satellite measurements, tide gauges, and climate models to provide accurate sea level predictions."
+        "description": "Aggregates logistics and trade data from ports, shipping lines, and cold storage facilities to deliver a complete view of Europe's cold-chain ecosystem."
       },
       "prediction": {
         "title": "Prediction",
-        "description": "Advanced modeling techniques to predict sea level rise under different climate scenarios, helping ports prepare for future challenges."
+        "description": "Uses advanced modeling to forecast future demand for refrigerated transport and storage, helping ports and operators anticipate capacity needs."
       },
       "insights": {
         "title": "Insights",
-        "description": "Visual analysis tools that transform complex data into actionable insights, enabling informed decision-making for port authorities."
+        "description": "Transforms complex cold-chain data into clear, actionable insights, supporting strategic decisions for infrastructure, investment, and policy planning."
       }
     },
     "caseStudies": {
